@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 
-import de.cuuky.minecraftutils.hooking.hooks.HookEntityType;
-import de.cuuky.minecraftutils.utils.JavaUtils;
+import de.cuuky.cfw.hooking.hooks.HookEntityType;
+import de.cuuky.cfw.utils.JavaUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.chest.SkyWarsChest;
 import de.cuuky.skywars.chest.loot.SkyWarsChestType;
@@ -36,8 +36,8 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 	public SkyWarsIngameThread(SkyWarsGame game) {
 		super(game);
 
-		Main.getInstance().getMinecraftUtils().getInventoryManager().closeInventories();
-		Main.getInstance().getMinecraftUtils().getHookManager().clearHooks(HookEntityType.ITEM);
+		Main.getInstance().getCuukyFrameWork().getInventoryManager().closeInventories();
+		Main.getInstance().getCuukyFrameWork().getHookManager().clearHooks(HookEntityType.ITEM);
 
 		preparePlayers();
 		detectChestType();

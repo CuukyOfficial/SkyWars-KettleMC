@@ -2,7 +2,7 @@ package de.cuuky.skywars.game.thread.threads;
 
 import org.bukkit.entity.Player;
 
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.game.SkyWarsGame;
 import de.cuuky.skywars.game.SkyWarsGamestate;

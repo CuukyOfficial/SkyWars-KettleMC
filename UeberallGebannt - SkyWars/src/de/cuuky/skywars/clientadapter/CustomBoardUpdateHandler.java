@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.bukkit.entity.Player;
 
-import de.cuuky.minecraftutils.clientadapter.board.BoardUpdateHandler;
+import de.cuuky.cfw.clientadapter.board.BoardUpdateHandler;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 import de.cuuky.skywars.entity.team.SkyWarsTeam;

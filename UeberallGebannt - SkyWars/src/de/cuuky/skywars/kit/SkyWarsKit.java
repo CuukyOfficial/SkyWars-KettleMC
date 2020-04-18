@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import de.cuuky.minecraftutils.item.ItemBuilder;
+import de.cuuky.cfw.item.ItemBuilder;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 
 public class SkyWarsKit implements ConfigurationSerializable {

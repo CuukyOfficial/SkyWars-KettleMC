@@ -1,6 +1,6 @@
 package de.cuuky.skywars.configuration;
 
-import de.cuuky.minecraftutils.configuration.BasicConfigurationHandler;
+import de.cuuky.cfw.configuration.BasicConfigurationHandler;
 
 public class SkyWarsConfiguration extends BasicConfigurationHandler {
 

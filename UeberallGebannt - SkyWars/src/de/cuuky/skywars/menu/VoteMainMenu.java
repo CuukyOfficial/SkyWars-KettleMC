@@ -6,9 +6,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.cuuky.minecraftutils.item.ItemBuilder;
-import de.cuuky.minecraftutils.menu.SuperInventory;
-import de.cuuky.minecraftutils.menu.utils.PageAction;
+import de.cuuky.cfw.item.ItemBuilder;
+import de.cuuky.cfw.menu.SuperInventory;
+import de.cuuky.cfw.menu.utils.PageAction;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.menu.vote.ChestVoteMenu;
 import de.cuuky.skywars.menu.vote.LootVoteMenu;
@@ -20,7 +20,7 @@ public class VoteMainMenu extends SuperInventory {
 
 		this.setModifier = false;
 		
-		Main.getInstance().getMinecraftUtils().getInventoryManager().registerInventory(this);
+		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
 		open();
 	}
 

@@ -9,13 +9,13 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import de.cuuky.minecraftutils.hooking.hooks.item.ItemHook;
-import de.cuuky.minecraftutils.hooking.hooks.item.ItemHookHandler;
-import de.cuuky.minecraftutils.item.ItemBuilder;
-import de.cuuky.minecraftutils.menu.utils.PlayerChooseInventory;
-import de.cuuky.minecraftutils.menu.utils.PlayerChooseInventory.PlayerChooseEvent;
-import de.cuuky.minecraftutils.menu.utils.PlayerChooseInventory.PlayerChooseHandler;
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.hooking.hooks.item.ItemHook;
+import de.cuuky.cfw.hooking.hooks.item.ItemHookHandler;
+import de.cuuky.cfw.item.ItemBuilder;
+import de.cuuky.cfw.menu.utils.PlayerChooseInventory;
+import de.cuuky.cfw.menu.utils.PlayerChooseInventory.PlayerChooseEvent;
+import de.cuuky.cfw.menu.utils.PlayerChooseInventory.PlayerChooseHandler;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.chest.SkyWarsChest;
 import de.cuuky.skywars.menu.KitMenu;
@@ -26,7 +26,7 @@ import de.cuuky.skywars.menu.setup.SetSpawnMenu;
 public class SkyWarsItemUtils {
 	
 	private static void addSetupHook(ItemHook hook) {
-		((ItemHook) Main.getInstance().getMinecraftUtils().getHookManager().registerHook(hook)).setDropable(true);
+		((ItemHook) Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(hook)).setDropable(true);
 	}
 
 	public static void giveSetupItems(Player player) {
@@ -114,7 +114,7 @@ public class SkyWarsItemUtils {
 		player.getInventory().clear();
 		player.getInventory().setArmorContents(new ItemStack[] {});
 
-		Main.getInstance().getMinecraftUtils().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bWähle dein Kit").material(Material.CHEST).build(), 0, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bWähle dein Kit").material(Material.CHEST).build(), 0, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -133,7 +133,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getMinecraftUtils().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§eWähle dein Team").material(Material.BED).build(), 1, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§eWähle dein Team").material(Material.BED).build(), 1, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -152,7 +152,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getMinecraftUtils().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§cAbstimmungen").material(Material.ANVIL).build(), 2, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§cAbstimmungen").material(Material.ANVIL).build(), 2, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -171,7 +171,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getMinecraftUtils().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§1Stats").material(Material.BOOK).build(), 8, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§1Stats").material(Material.BOOK).build(), 8, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -203,7 +203,7 @@ public class SkyWarsItemUtils {
 		for(Player pl : VersionUtils.getOnlinePlayer())
 			pl.hidePlayer(player);
 
-		Main.getInstance().getMinecraftUtils().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bTeleporter").itemstack(new ItemStack(Material.COMPASS)).build(), 0, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bTeleporter").itemstack(new ItemStack(Material.COMPASS)).build(), 0, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -216,7 +216,7 @@ public class SkyWarsItemUtils {
 					public void onPlayerChoose(PlayerChooseEvent event) {
 						player.teleport(event.getChoosen());
 					}
-				}, Main.getInstance().getMinecraftUtils());
+				}, Main.getInstance().getCuukyFrameWork());
 			}
 
 			@Override

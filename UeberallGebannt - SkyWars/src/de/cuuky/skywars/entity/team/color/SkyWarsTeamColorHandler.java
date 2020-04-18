@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import de.cuuky.minecraftutils.serialization.CompatibleLocation;
+import de.cuuky.cfw.serialization.CompatibleLocation;
 
 public class SkyWarsTeamColorHandler {
 

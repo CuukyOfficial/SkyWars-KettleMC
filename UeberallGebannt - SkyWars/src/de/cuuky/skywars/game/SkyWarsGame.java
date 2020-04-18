@@ -7,7 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 
-import de.cuuky.minecraftutils.utils.JavaUtils;
+import de.cuuky.cfw.utils.JavaUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.chest.SkyWarsChest;
 import de.cuuky.skywars.chest.SkyWarsChestHandler;

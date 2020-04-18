@@ -6,8 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
-import de.cuuky.minecraftutils.item.ItemBuilder;
-import de.cuuky.minecraftutils.utils.JavaUtils;
+import de.cuuky.cfw.item.ItemBuilder;
+import de.cuuky.cfw.utils.JavaUtils;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 
 public enum SkyWarsLootType {

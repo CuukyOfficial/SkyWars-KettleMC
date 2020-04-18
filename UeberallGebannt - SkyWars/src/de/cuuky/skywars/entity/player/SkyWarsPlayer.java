@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.bukkit.entity.Player;
 
-import de.cuuky.minecraftutils.clientadapter.ClientAdapterManager;
-import de.cuuky.minecraftutils.clientadapter.board.nametag.CustomNametag;
-import de.cuuky.minecraftutils.clientadapter.board.scoreboard.CustomScoreboard;
-import de.cuuky.minecraftutils.clientadapter.board.tablist.CustomTablist;
-import de.cuuky.minecraftutils.player.CustomPlayer;
-import de.cuuky.minecraftutils.player.connection.NetworkManager;
+import de.cuuky.cfw.clientadapter.ClientAdapterManager;
+import de.cuuky.cfw.clientadapter.board.nametag.CustomNametag;
+import de.cuuky.cfw.clientadapter.board.scoreboard.CustomScoreboard;
+import de.cuuky.cfw.clientadapter.board.tablist.CustomTablist;
+import de.cuuky.cfw.player.CustomPlayer;
+import de.cuuky.cfw.player.connection.NetworkManager;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.SkyWarsEntity;
 import de.cuuky.skywars.entity.player.stats.SkyWarsPlayerStats;
@@ -97,7 +97,7 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 			this.name = player.getName();
 			this.networkmanager = new NetworkManager(player);
 			
-			ClientAdapterManager utils = Main.getInstance().getMinecraftUtils().getClientAdapterManager();
+			ClientAdapterManager utils = Main.getInstance().getCuukyFrameWork().getClientAdapterManager();
 			this.scoreboard = (CustomScoreboard) utils.registerBoard(new CustomScoreboard(this));
 			this.nametag = (CustomNametag) utils.registerBoard(new CustomNametag(this));
 			this.tablist = (CustomTablist) utils.registerBoard(new CustomTablist(this));

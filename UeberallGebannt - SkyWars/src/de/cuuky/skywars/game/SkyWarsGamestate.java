@@ -3,7 +3,7 @@ package de.cuuky.skywars.game;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import de.cuuky.minecraftutils.utils.JavaUtils;
+import de.cuuky.cfw.utils.JavaUtils;
 
 public enum SkyWarsGamestate {
 

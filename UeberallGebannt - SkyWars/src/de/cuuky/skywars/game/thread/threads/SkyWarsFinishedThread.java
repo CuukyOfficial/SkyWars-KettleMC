@@ -5,7 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 import de.cuuky.skywars.entity.player.SkyWarsPlayerState;

@@ -12,8 +12,8 @@ import org.bukkit.block.Chest;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.inventory.ItemStack;
 
-import de.cuuky.minecraftutils.serialization.CompatibleLocation;
-import de.cuuky.minecraftutils.utils.JavaUtils;
+import de.cuuky.cfw.serialization.CompatibleLocation;
+import de.cuuky.cfw.utils.JavaUtils;
 import de.cuuky.skywars.chest.loot.SkyWarsLootType;
 
 public class SkyWarsChest implements ConfigurationSerializable {

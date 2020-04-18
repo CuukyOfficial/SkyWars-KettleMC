@@ -13,7 +13,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 import de.cuuky.skywars.entity.player.SkyWarsPlayerState;

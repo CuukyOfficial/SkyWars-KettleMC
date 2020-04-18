@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.chest.loot.SkyWarsChestType;
 import de.cuuky.skywars.chest.loot.SkyWarsLootType;

@@ -4,9 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.cuuky.minecraftutils.MinecraftUtils;
-import de.cuuky.minecraftutils.clientadapter.board.CustomBoardType;
-import de.cuuky.minecraftutils.version.VersionUtils;
+import de.cuuky.cfw.CuukyFrameWork;
+import de.cuuky.cfw.clientadapter.board.CustomBoardType;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.clientadapter.CustomBoardUpdateHandler;
 import de.cuuky.skywars.commands.ForceMapCommand;
 import de.cuuky.skywars.commands.KitCommand;
@@ -30,7 +30,7 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 
 	private SkyWarsGame skyWarsGame;
-	private MinecraftUtils minecraftUtils;
+	private CuukyFrameWork cuukyFrameWork;
 
 	@Override
 	public void onEnable() {
@@ -38,9 +38,9 @@ public class Main extends JavaPlugin {
 		instance = this;
 
 		System.out.println(CONSOLE_PREFIX + "Initializing framework...");
-		this.minecraftUtils = new MinecraftUtils(this);
-		this.minecraftUtils.getClientAdapterManager().setUpdateHandler(new CustomBoardUpdateHandler());
-		this.minecraftUtils.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.TABLIST, false);
+		this.cuukyFrameWork = new CuukyFrameWork(this);
+		this.cuukyFrameWork.getClientAdapterManager().setUpdateHandler(new CustomBoardUpdateHandler());
+		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.TABLIST, false);
 
 		System.out.println(CONSOLE_PREFIX + "Loading MySQL...");
 		skyWarsGame = new SkyWarsGame();
@@ -92,8 +92,8 @@ public class Main extends JavaPlugin {
 		return skyWarsGame;
 	}
 	
-	public MinecraftUtils getMinecraftUtils() {
-		return minecraftUtils;
+	public CuukyFrameWork getCuukyFrameWork() {
+		return cuukyFrameWork;
 	}
 
 	public static String getConsolePrefix() {
