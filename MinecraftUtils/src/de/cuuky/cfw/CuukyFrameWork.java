@@ -14,10 +14,11 @@ import de.cuuky.cfw.serialization.CompatibleLocation;
 public class CuukyFrameWork {
 
 	/*
-	 * MinecraftUtils - A Bukkit framework
+	 * CFW - A Bukkit framework
 	 * 
 	 * VERSION: 0.1 (2020) 
 	 * AUTHOR: Cuuky
+	 * CONTACT: { website: "varoplugin.de", discord: 'Cuuky#2783', mail: 'just.cookie.jc@gmail.com' }
 	 */
 
 	private JavaPlugin ownerInstance;
