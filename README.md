@@ -1,2 +1,2 @@
-# SkyWars---KettleMC
+# SkyWars-KettleMC
 SkyWars Plugin for KettleMC
