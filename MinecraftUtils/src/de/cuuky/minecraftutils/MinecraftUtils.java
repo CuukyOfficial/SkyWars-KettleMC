@@ -1,6 +1,7 @@
 package de.cuuky.minecraftutils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.cuuky.minecraftutils.clientadapter.ClientAdapterManager;
@@ -8,6 +9,7 @@ import de.cuuky.minecraftutils.hooking.HookManager;
 import de.cuuky.minecraftutils.hooking.listener.HookListener;
 import de.cuuky.minecraftutils.menu.SuperInventoryManager;
 import de.cuuky.minecraftutils.menu.utils.InventoryListener;
+import de.cuuky.minecraftutils.serialization.CompatibleLocation;
 
 public class MinecraftUtils {
 
@@ -30,6 +32,8 @@ public class MinecraftUtils {
 		this.hookManager = new HookManager(this);
 		this.clientAdapterManager = new ClientAdapterManager(this);
 		this.inventoryManager = new SuperInventoryManager(this);
+		
+		ConfigurationSerialization.registerClass(CompatibleLocation.class);
 
 		registerListener();
 	}
