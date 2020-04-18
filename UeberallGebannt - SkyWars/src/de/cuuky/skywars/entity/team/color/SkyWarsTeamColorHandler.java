@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import de.cuuky.minecraftutils.serialization.CompatibleLocation;
+
 public class SkyWarsTeamColorHandler {
 
 	private File file;
@@ -30,9 +32,9 @@ public class SkyWarsTeamColorHandler {
 			if(color == null)
 				continue;
 
-			ArrayList<Location> locations = (ArrayList<Location>) this.configuration.get(color.toString() + ".locations");
-			for(Location location : locations)
-				color.addSpawnLocation(location);
+			ArrayList<CompatibleLocation> locations = (ArrayList<CompatibleLocation>) this.configuration.get(color.toString() + ".locations");
+			for(CompatibleLocation location : locations)
+				color.addSpawnLocation(location.getLocation());
 		}
 	}
 
@@ -49,8 +51,9 @@ public class SkyWarsTeamColorHandler {
 			this.configuration.set(path, null);
 
 		for(SkyWarsTeamColor teamcolor : SkyWarsTeamColor.values()) {
-			ArrayList<Location> locations = new ArrayList<>();
-			locations.addAll(teamcolor.getSpawnLocations().values());
+			ArrayList<CompatibleLocation> locations = new ArrayList<>();
+			for(Location loc : teamcolor.getSpawnLocations().values())
+				locations.add(new CompatibleLocation(loc));
 			
 			this.configuration.set(teamcolor.toString() + ".locations", locations);
 		}
