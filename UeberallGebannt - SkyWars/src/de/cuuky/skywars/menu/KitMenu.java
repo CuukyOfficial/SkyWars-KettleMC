@@ -61,7 +61,7 @@ public class KitMenu extends SuperInventory {
 			if(boughtItems.contains(kit))
 				continue;
 
-			linkItemTo(slot, new ItemBuilder().itemstack(kit.getIcon()).lore("§cKaufen").build(), null);
+			linkItemTo(slot, new ItemBuilder().itemstack(kit.getIcon()).lore("§cNicht in Besitz").build(), null);
 			slot++;
 		}
 		return true;
