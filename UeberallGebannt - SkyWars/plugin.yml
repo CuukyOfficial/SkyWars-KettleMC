@@ -1,0 +1,13 @@
+name: SkyWars
+author: Cuuky
+version: 0.2
+main: de.cuuky.skywars.Main
+
+commands:
+ setup:
+  permission: skywars.setup
+ forcemap:
+  permission: skywars.forcemap
+ kit:
+  permission: skywars.setupkits
+ stats:
