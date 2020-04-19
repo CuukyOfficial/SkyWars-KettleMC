@@ -57,11 +57,6 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 	}
 
 	@Override
-	public boolean showHeartsBelowName(Player player) {
-		return false;
-	}
-
-	@Override
 	public String getNametagName(Player player) {
 		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
 		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(sPlayer);
@@ -90,5 +85,10 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 	@Override
 	public boolean isNametagVisible(Player player) {
 		return false;
+	}
+
+	@Override
+	public String getTablistName(Player player) {
+		return getNametagName(player) + player.getName() + getNametagSuffix(player);
 	}
 }
