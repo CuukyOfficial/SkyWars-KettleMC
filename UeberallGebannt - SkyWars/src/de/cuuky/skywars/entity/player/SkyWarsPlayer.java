@@ -127,6 +127,11 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 	public String getName() {
 		return name == null ? uuid : name;
 	}
+	
+	@Override
+	public String getLocale() {
+		return this.networkmanager.getLocale();
+	}
 
 	public static SkyWarsPlayer getPlayer(Player player) {
 		return getPlayer(player.getUniqueId().toString());
