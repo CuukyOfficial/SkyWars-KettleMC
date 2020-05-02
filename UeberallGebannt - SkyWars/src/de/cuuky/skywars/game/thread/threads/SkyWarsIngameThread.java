@@ -50,8 +50,8 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 			e.printStackTrace();
 		}
 
-		Bukkit.broadcastMessage(Main.getPrefix() + "Loot Type: §e" + lootType.toString());
-		Bukkit.broadcastMessage(Main.getPrefix() + "Chest Type: §e" + chestType.toString());
+		Bukkit.broadcastMessage(Main.getPrefix() + "Loot Type: Â§e" + lootType.toString());
+		Bukkit.broadcastMessage(Main.getPrefix() + "Chest Type: Â§e" + chestType.toString());
 
 		for(SkyWarsChest chest : SkyWarsChest.getChests())
 			if(chest.getLocation().getWorld().equals(Main.getInstance().getSkyWarsGame().getGameworld()))

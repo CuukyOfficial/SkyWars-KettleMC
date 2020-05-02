@@ -107,7 +107,7 @@ public class SkyWarsGame {
 				return;
 		}
 
-		Bukkit.broadcastMessage(Main.getPrefix() + "§7Das Team " + alive.getTeamcolor().getFullColor() + alive.getName() + " §7hat §eSkyWars §7gewonnen!");
+		Bukkit.broadcastMessage(Main.getPrefix() + "Â§7Das Team " + alive.getTeamcolor().getFullColor() + alive.getName() + " Â§7hat Â§eSkyWars Â§7gewonnen!");
 		setState(SkyWarsGamestate.FINISHED);
 	}
 
@@ -175,7 +175,7 @@ public class SkyWarsGame {
 
 	public void setGameworld(World gameworld) {
 		if(this.gameworld != null)
-			Bukkit.broadcastMessage(Main.getPrefix() + "Die Map wurde geändert!");
+			Bukkit.broadcastMessage(Main.getPrefix() + "Die Map wurde geÂ§ndert!");
 
 		this.gameworld = gameworld;
 

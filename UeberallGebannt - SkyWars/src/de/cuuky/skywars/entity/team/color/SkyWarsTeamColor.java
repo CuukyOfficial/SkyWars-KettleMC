@@ -13,19 +13,19 @@ public enum SkyWarsTeamColor {
 
 	RED("Rot", ChatColor.RED),
 	YELLOW("Gelb", ChatColor.YELLOW),
-	GREEN("Grün", ChatColor.GREEN),
+	GREEN("GrÂ§n", ChatColor.GREEN),
 	BLUE("Blau", ChatColor.BLUE),
 	ORANGE("Orange", ChatColor.GOLD),
 	LIGHT_BLUE("Hellblau", ChatColor.AQUA),
 	PINK("Pink", ChatColor.LIGHT_PURPLE),
 	AQUA("Aqua", ChatColor.DARK_AQUA),
 	DARK_RED("Dunkelrot", ChatColor.DARK_RED),
-	DARK_GREEN("Dunkelgrün", ChatColor.DARK_GREEN),
+	DARK_GREEN("DunkelgrÂ§n", ChatColor.DARK_GREEN),
 	DARK_BLUE("Dunkelblau", ChatColor.DARK_BLUE),
 	PURPLE("Lila", ChatColor.DARK_PURPLE),
 	BLACK("Schwarz", ChatColor.BLACK),
 	GRAY("Grau", ChatColor.GRAY),
-	WHITE("Weiß", ChatColor.WHITE),
+	WHITE("WeiÂ§", ChatColor.WHITE),
 	DARK_GRAY("Dunkelgrau", ChatColor.DARK_GRAY);
 
 	private String name;
@@ -43,7 +43,7 @@ public enum SkyWarsTeamColor {
 	}
 
 	public String getFullColor() {
-		return "§" + color.getChar();
+		return "Â§" + color.getChar();
 	}
 
 	public void addSpawnLocation(Location location) {

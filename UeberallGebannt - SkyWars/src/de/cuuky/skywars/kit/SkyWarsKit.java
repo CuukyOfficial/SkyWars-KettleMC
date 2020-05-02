@@ -47,7 +47,7 @@ public class SkyWarsKit implements ConfigurationSerializable {
 		this.id = generateId();
 		this.name = name;
 		this.permission = permission;
-		this.icon = new ItemBuilder().displayname("ง4No-Icon").material(Material.BAKED_POTATO).build();
+		this.icon = new ItemBuilder().displayname("ยง4No-Icon").material(Material.BAKED_POTATO).build();
 
 		loadInventory(player);
 		loadPotionEffects(player.getActivePotionEffects());
@@ -119,7 +119,7 @@ public class SkyWarsKit implements ConfigurationSerializable {
 	}
 
 	public String getName() {
-		return name.replace("&", "ง");
+		return name.replace("&", "ยง");
 	}
 
 	public String getPermission() {

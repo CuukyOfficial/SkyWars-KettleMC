@@ -23,7 +23,7 @@ public class PlayerHandleListener implements Listener {
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {
 		if(VersionUtils.getOnlinePlayer().size() >= (Main.getInstance().getSkyWarsGame().getTeamAmount() * Main.getInstance().getSkyWarsGame().getTeamSize())) {
-			event.setKickMessage("§7The server is full!");
+			event.setKickMessage("Â§7The server is full!");
 			event.setResult(Result.KICK_FULL);
 			return;
 		}
@@ -32,10 +32,10 @@ public class PlayerHandleListener implements Listener {
 		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
 		case SETUP:
 			if(!player.hasPermission("skywars.setup"))
-				event.disallow(Result.KICK_OTHER, "§4Server wird noch aufgesetzt!");
+				event.disallow(Result.KICK_OTHER, "Â§4Server wird noch aufgesetzt!");
 			break;
 		case FINISHED:
-			event.disallow(Result.KICK_OTHER, "§7Das Spiel ist bereits vorüber!");
+			event.disallow(Result.KICK_OTHER, "Â§7Das Spiel ist bereits vorÂ§ber!");
 			break;
 		default:
 			break;
@@ -56,7 +56,7 @@ public class PlayerHandleListener implements Listener {
 
 		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
 		case SETUP:
-			event.setJoinMessage("§6" + mp.getName() + " §7hat das Spiel betreten");
+			event.setJoinMessage("Â§6" + mp.getName() + " Â§7hat das Spiel betreten");
 			
 			player.setGameMode(GameMode.CREATIVE);
 			SkyWarsItemUtils.giveSetupItems(player);
@@ -90,7 +90,7 @@ public class PlayerHandleListener implements Listener {
 
 		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
 		case LOBBY:
-			event.setQuitMessage("§6" + mp.getName() + " §7hat das Spiel verlassen");
+			event.setQuitMessage("Â§6" + mp.getName() + " Â§7hat das Spiel verlassen");
 			SkyWarsLootType.removeAllVotes(mp);
 			SkyWarsChestType.removeAllVotes(mp);
 

@@ -24,7 +24,7 @@ public class ChestVoteMenu extends SuperInventory {
 	}
 
 	public ChestVoteMenu(Player opener) {
-		super("§eChest", opener, 18, true);
+		super("Â§eChest", opener, 18, true);
 		
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
@@ -50,7 +50,7 @@ public class ChestVoteMenu extends SuperInventory {
 	@Override
 	public boolean onOpen() {
 		SkyWarsPlayer swp = SkyWarsPlayer.getPlayer(opener);
-		linkItemTo(12, new ItemBuilder().displayname("§1Normal").itemstack(new ItemStack(Material.CHEST)).lore("§7Votes §e" + SkyWarsChestType.NORMAL.getVotes().size()).build(), new Runnable() {
+		linkItemTo(12, new ItemBuilder().displayname("Â§1Normal").itemstack(new ItemStack(Material.CHEST)).lore("Â§7Votes Â§e" + SkyWarsChestType.NORMAL.getVotes().size()).build(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -61,7 +61,7 @@ public class ChestVoteMenu extends SuperInventory {
 			}
 		});
 
-		linkItemTo(14, new ItemBuilder().displayname("§5Speed").itemstack(new ItemStack(Material.ENDER_CHEST)).lore("§7Votes: §e" + SkyWarsChestType.SPEED.getVotes().size()).build(), new Runnable() {
+		linkItemTo(14, new ItemBuilder().displayname("Â§5Speed").itemstack(new ItemStack(Material.ENDER_CHEST)).lore("Â§7Votes: Â§e" + SkyWarsChestType.SPEED.getVotes().size()).build(), new Runnable() {
 
 			@Override
 			public void run() {

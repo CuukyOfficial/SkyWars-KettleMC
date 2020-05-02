@@ -24,18 +24,18 @@ public class ForceMapCommand implements CommandExecutor {
 		}
 		
 		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.LOBBY) {
-			sender.sendMessage(Main.getPrefix() + "Nur in der Lobbyphase möglich!");
+			sender.sendMessage(Main.getPrefix() + "Nur in der Lobbyphase mÂ§glich!");
 			return false;
 		}
 		
 		World world = Bukkit.getWorld(args[0]);
 		if(world == null) {
-			sender.sendMessage(Main.getPrefix() + "Map §e" + args[1] + " §fnicht gefunden!");
+			sender.sendMessage(Main.getPrefix() + "Map Â§e" + args[1] + " Â§fnicht gefunden!");
 			return false;
 		}
 		
 		Main.getInstance().getSkyWarsGame().setGameworld(world);
-		sender.sendMessage(Main.getPrefix() + "Die Map lautet nun: §e" + world.getName());
+		sender.sendMessage(Main.getPrefix() + "Die Map lautet nun: Â§e" + world.getName());
 		return false;
 	}
 }

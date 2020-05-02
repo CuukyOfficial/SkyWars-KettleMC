@@ -36,7 +36,7 @@ public class SkyWarsTeam implements SkyWarsEntity {
 				return false;
 
 		if(checkWin) {
-			Bukkit.broadcastMessage(Main.getPrefix() + "§7Team " + this.color.getFullColor() + this.color.getName() + " §7wurde ausgelöscht!");
+			Bukkit.broadcastMessage(Main.getPrefix() + "Â§7Team " + this.color.getFullColor() + this.color.getName() + " Â§7wurde ausgelÂ§scht!");
 			Main.getInstance().getSkyWarsGame().checkForWin();
 		}
 

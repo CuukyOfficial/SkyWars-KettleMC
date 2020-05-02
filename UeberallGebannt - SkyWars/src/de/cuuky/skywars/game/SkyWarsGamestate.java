@@ -7,12 +7,12 @@ import de.cuuky.cfw.utils.JavaUtils;
 
 public enum SkyWarsGamestate {
 
-	SETUP(new String[] {"§f", "§fSETUP", "§e"}), 
+	SETUP(new String[] {"Â§f", "Â§fSETUP", "Â§e"}), 
 	
-	LOBBY(new String[] {"§f", 
+	LOBBY(new String[] {"Â§f", 
 			"&fMap:",
 			" &6%map%", 
-			"§e", 
+			"Â§e", 
 			"&fKit:", 
 			" &6%kit%"}), 
 	
@@ -26,13 +26,13 @@ public enum SkyWarsGamestate {
 			"&fKills:", 
 			" &6%kills%"}), 
 	
-	FINISHED(new String[] {"§f", 
+	FINISHED(new String[] {"Â§f", 
 			"&fMap:",
 			" &6%map%", 
-			"§e",
+			"Â§e",
 			"&fSpielzeit:",
 			" &6%time%",
-			"§1",
+			"Â§1",
 			"&fKills:",
 			" &6%kills%"});
 	

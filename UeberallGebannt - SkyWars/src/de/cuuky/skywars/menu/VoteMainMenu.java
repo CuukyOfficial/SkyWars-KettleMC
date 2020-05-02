@@ -16,7 +16,7 @@ import de.cuuky.skywars.menu.vote.LootVoteMenu;
 public class VoteMainMenu extends SuperInventory {
 
 	public VoteMainMenu(Player opener) {
-		super("§5Vote", opener, 18, true);
+		super("Â§5Vote", opener, 18, true);
 
 		this.setModifier = false;
 		
@@ -40,7 +40,7 @@ public class VoteMainMenu extends SuperInventory {
 
 	@Override
 	public boolean onOpen() {
-		linkItemTo(12, new ItemBuilder().displayname("§eChests").itemstack(new ItemStack(Material.CHEST)).build(), new Runnable() {
+		linkItemTo(12, new ItemBuilder().displayname("Â§eChests").itemstack(new ItemStack(Material.CHEST)).build(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -48,7 +48,7 @@ public class VoteMainMenu extends SuperInventory {
 			}
 		});
 
-		linkItemTo(14, new ItemBuilder().displayname("§6Loot").itemstack(new ItemStack(Material.GOLDEN_APPLE)).build(), new Runnable() {
+		linkItemTo(14, new ItemBuilder().displayname("Â§6Loot").itemstack(new ItemStack(Material.GOLDEN_APPLE)).build(), new Runnable() {
 
 			@Override
 			public void run() {

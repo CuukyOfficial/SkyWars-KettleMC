@@ -14,7 +14,7 @@ public class KitCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(!sender.hasPermission("skywars.setupkits")) {
-			sender.sendMessage(Main.getPrefix() + "Nutze die Kiste um dein Kit auszuwählen!");
+			sender.sendMessage(Main.getPrefix() + "Nutze die Kiste um dein Kit auszuwÂ§hlen!");
 			return false;
 		}
 
@@ -24,8 +24,8 @@ public class KitCommand implements CommandExecutor {
 		}
 
 		if(args.length == 0) {
-			sender.sendMessage(Main.getPrefix() + "/kit add <Displayname> [Permission] §8- §7Added Kit mit derzeitigem Inventar und Statuseffekten");
-			sender.sendMessage(Main.getPrefix() + "/kit icon <KitID> §8- §7Setzt das Icon des Kits auf das in der Hand");
+			sender.sendMessage(Main.getPrefix() + "/kit add <Displayname> [Permission] Â§8- Â§7Added Kit mit derzeitigem Inventar und Statuseffekten");
+			sender.sendMessage(Main.getPrefix() + "/kit icon <KitID> Â§8- Â§7Setzt das Icon des Kits auf das in der Hand");
 			sender.sendMessage(Main.getPrefix() + "/kit remove <KitID>");
 			sender.sendMessage(Main.getPrefix() + "/kit load <KitID>");
 			sender.sendMessage(Main.getPrefix() + "/kit list");
@@ -34,12 +34,12 @@ public class KitCommand implements CommandExecutor {
 
 		if(args[0].equalsIgnoreCase("add")) {
 			if(args.length < 2) {
-				sender.sendMessage(Main.getPrefix() + "/kit add <Displayname> [Permission] §8- §7Added Kit mit derzeitigem Inventar und Statuseffekten");
+				sender.sendMessage(Main.getPrefix() + "/kit add <Displayname> [Permission] Â§8- Â§7Added Kit mit derzeitigem Inventar und Statuseffekten");
 				return false;
 			}
 
 			SkyWarsKit kit = new SkyWarsKit(args[1], args.length > 2 ? args[2] : null, (Player) sender);
-			sender.sendMessage(Main.getPrefix() + "Kit mit der ID §e" + kit.getId() + " §ferfolgreich erstellt!");
+			sender.sendMessage(Main.getPrefix() + "Kit mit der ID Â§e" + kit.getId() + " Â§ferfolgreich erstellt!");
 		} else if(args[0].equalsIgnoreCase("icon")) {
 			if(args.length != 2) {
 				sender.sendMessage(Main.getPrefix() + "/kit icon <KitID>");
@@ -67,7 +67,7 @@ public class KitCommand implements CommandExecutor {
 			}
 
 			kit.setIcon(item);
-			sender.sendMessage(Main.getPrefix() + "Icon von Kit §e" + kitid + " §ferfolgreich gesetzt!");
+			sender.sendMessage(Main.getPrefix() + "Icon von Kit Â§e" + kitid + " Â§ferfolgreich gesetzt!");
 		} else if(args[0].equalsIgnoreCase("remove")) {
 			if(args.length != 2) {
 				sender.sendMessage(Main.getPrefix() + "/kit remove <KitID>");
@@ -89,7 +89,7 @@ public class KitCommand implements CommandExecutor {
 			}
 
 			kit.remove();
-			sender.sendMessage(Main.getPrefix() + "Kit §e" + kitid + " §ferfolgreich entfernt!");
+			sender.sendMessage(Main.getPrefix() + "Kit Â§e" + kitid + " Â§ferfolgreich entfernt!");
 		} else if(args[0].equalsIgnoreCase("list")) {
 			if(SkyWarsKit.getKits().size() == 0) {
 				sender.sendMessage(Main.getPrefix() + "Keine Kits gefunden!");
@@ -97,7 +97,7 @@ public class KitCommand implements CommandExecutor {
 			}
 
 			for(SkyWarsKit kit : SkyWarsKit.getKits())
-				sender.sendMessage(Main.getPrefix() + "Kit §e" + kit.getId() + "§8: §7" + kit.getName());
+				sender.sendMessage(Main.getPrefix() + "Kit Â§e" + kit.getId() + "Â§8: Â§7" + kit.getName());
 		} else if(args[0].equalsIgnoreCase("load")) {
 			if(args.length != 2) {
 				sender.sendMessage(Main.getPrefix() + "/kit load <KitID>");
@@ -119,7 +119,7 @@ public class KitCommand implements CommandExecutor {
 			}
 
 			kit.restoreInventory((Player) sender);
-			sender.sendMessage(Main.getPrefix() + "Kit §e" + kitid + " §ferfolgreich geladen!");
+			sender.sendMessage(Main.getPrefix() + "Kit Â§e" + kitid + " Â§ferfolgreich geladen!");
 		} else
 			sender.sendMessage(Main.getPrefix() + "/kit");
 		return false;

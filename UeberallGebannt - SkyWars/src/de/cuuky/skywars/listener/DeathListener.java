@@ -56,7 +56,7 @@ public class DeathListener implements Listener {
 		SkyWarsTeam killerTeam = SkyWarsTeam.getTeam(killer);
 		killer.getStats().addKill();
 
-		Bukkit.broadcastMessage(Main.getPrefix() + team.getTeamcolor().getFullColor() + player.getName() + " §7wurde von " + killerTeam.getTeamcolor().getFullColor() + killer.getName() + "§7 getötet!");
+		Bukkit.broadcastMessage(Main.getPrefix() + team.getTeamcolor().getFullColor() + player.getName() + " Â§7wurde von " + killerTeam.getTeamcolor().getFullColor() + killer.getName() + "Â§7 getÂ§tet!");
 		playerDeath(player);
 	}
 
@@ -97,7 +97,7 @@ public class DeathListener implements Listener {
 			}
 		}
 		
-		Bukkit.broadcastMessage(Main.getPrefix() + team.getTeamcolor().getFullColor() + player.getName() + " §7ist gestorben!");
+		Bukkit.broadcastMessage(Main.getPrefix() + team.getTeamcolor().getFullColor() + player.getName() + " Â§7ist gestorben!");
 		playerDeath(player);
 	}
 }

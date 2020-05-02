@@ -25,7 +25,7 @@ import de.cuuky.skywars.utils.SkyWarsItemUtils;
 
 public class Main extends JavaPlugin {
 
-	private static final String PREFIX = "§e§lSKYWARS §8» §7", CONSOLE_PREFIX = "[SkyWars] ";
+	private static final String PREFIX = "Â§eÂ§lSKYWARS Â§8Â§ Â§7", CONSOLE_PREFIX = "[SkyWars] ";
 
 	private static Main instance;
 

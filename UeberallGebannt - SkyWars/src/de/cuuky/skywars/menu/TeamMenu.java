@@ -25,7 +25,7 @@ public class TeamMenu extends SuperInventory {
 	}
 
 	public TeamMenu(Player opener) {
-		super("§1Team auswählen", opener, JavaUtils.getNextToNine(SkyWarsTeam.getTeams().size() * 2), true);
+		super("Â§1Team auswÂ§hlen", opener, JavaUtils.getNextToNine(SkyWarsTeam.getTeams().size() * 2), true);
 
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
@@ -59,14 +59,14 @@ public class TeamMenu extends SuperInventory {
 			SkyWarsTeam team = teams.get(teamnumber);
 
 			ArrayList<String> lore = new ArrayList<>();
-			lore.add("§7Farbe: " + team.getTeamcolor().getFullColor() + team.getName());
+			lore.add("Â§7Farbe: " + team.getTeamcolor().getFullColor() + team.getName());
 			lore.add(" ");
 			for(int member = 0; member < Main.getInstance().getSkyWarsGame().getTeamSize(); member++)
-				lore.add("§7» " + team.getTeamcolor().getFullColor() + (team.getPlayers().size() > member ? team.getPlayers().get(member).getName() : "-"));
+				lore.add("Â§7Â§ " + team.getTeamcolor().getFullColor() + (team.getPlayers().size() > member ? team.getPlayers().get(member).getName() : "-"));
 
 			if(!team.isFull()) {
 				lore.add(" ");
-				lore.add("§7Klicke, um " + team.getTeamcolor().getFullColor() + "Team " + team.getName() + " §7beizutreten!");
+				lore.add("Â§7Klicke, um " + team.getTeamcolor().getFullColor() + "Team " + team.getName() + " Â§7beizutreten!");
 			}
 
 			linkItemTo(i, new ItemBuilder().displayname(team.getTeamcolor().getFullColor() + "Team " + team.getName()).lore(lore).itemstack(new ItemStack(Material.IRON_SWORD)).build(), new Runnable() {

@@ -18,13 +18,13 @@ public class StatsCommand implements CommandExecutor {
 		}
 		
 		SkyWarsPlayer player = SkyWarsPlayer.getPlayer((Player) sender);
-		player.getPlayer().sendMessage(Main.getPrefix() + "§8----- §7Deine §eStats §8-----");
-		player.getPlayer().sendMessage(Main.getPrefix() + "Kills: §e" + (player.getStats().getKills() + player.getStats().getLocalKills()));
-		player.getPlayer().sendMessage(Main.getPrefix() + "Tode: §e" + player.getStats().getDeaths());
-		player.getPlayer().sendMessage(Main.getPrefix() + "KDR: §e" + player.getStats().getKDR());
-		player.getPlayer().sendMessage(Main.getPrefix() + "Gespielte Spiele: §e" + player.getStats().getPlayedGames());
-		player.getPlayer().sendMessage(Main.getPrefix() + "Siege: §e" + player.getStats().getWins());
-		player.getPlayer().sendMessage(Main.getPrefix() + "Sieges Chance: §e" + Math.round((player.getStats().getWinChance() * 100d)) + "%");
+		player.getPlayer().sendMessage(Main.getPrefix() + "Â§8----- Â§7Deine Â§eStats Â§8-----");
+		player.getPlayer().sendMessage(Main.getPrefix() + "Kills: Â§e" + (player.getStats().getKills() + player.getStats().getLocalKills()));
+		player.getPlayer().sendMessage(Main.getPrefix() + "Tode: Â§e" + player.getStats().getDeaths());
+		player.getPlayer().sendMessage(Main.getPrefix() + "KDR: Â§e" + player.getStats().getKDR());
+		player.getPlayer().sendMessage(Main.getPrefix() + "Gespielte Spiele: Â§e" + player.getStats().getPlayedGames());
+		player.getPlayer().sendMessage(Main.getPrefix() + "Siege: Â§e" + player.getStats().getWins());
+		player.getPlayer().sendMessage(Main.getPrefix() + "Sieges Chance: Â§e" + Math.round((player.getStats().getWinChance() * 100d)) + "%");
 		return false;
 	}
 }

@@ -25,7 +25,7 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 
 	@Override
 	public String getScoreboardTitle(Player player) {
-		return "§e§lSkyWars";
+		return "Â§eÂ§lSkyWars";
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 		for(int i = 0; i < scoreboard.size(); i++) {
 			String line = scoreboard.get(i);
 			
-			line = line.replace("&", "§");
+			line = line.replace("&", "Â§");
 			line = line.replace("%localKills%", String.valueOf(sPlayer.getStats().getKills()));
 			line = line.replace("%kills%", String.valueOf(sPlayer.getStats().getLocalKills()));
 			line = line.replace("%team%", sTeam != null ? sTeam.getName() : "-");
@@ -63,7 +63,7 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 
 		String name = GroupRank.getGroupRank(player).getSortPriority() + player.getName();
 		if(sTeam != null)
-			name = name + sTeam.getTeamcolor().getFullColor().replace("§", "");
+			name = name + sTeam.getTeamcolor().getFullColor().replace("Â§", "");
 
 		return name;
 	}
@@ -73,13 +73,13 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
 		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(sPlayer);
 
-		return sTeam == null ? GroupRank.getGroupRank(player).getPrefix() : sTeam.getTeamcolor().getFullColor() + sTeam.getName() + " §8| " + sTeam.getTeamcolor().getFullColor();
+		return sTeam == null ? GroupRank.getGroupRank(player).getPrefix() : sTeam.getTeamcolor().getFullColor() + sTeam.getName() + " Â§8| " + sTeam.getTeamcolor().getFullColor();
 	}
 
 	@Override
 	public String getNametagSuffix(Player player) {
 		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
-		return Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME ? " §c" + sPlayer.getKills() : "";
+		return Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME ? " Â§c" + sPlayer.getKills() : "";
 	}
 
 	@Override

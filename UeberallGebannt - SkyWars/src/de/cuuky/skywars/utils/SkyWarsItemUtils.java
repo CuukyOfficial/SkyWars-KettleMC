@@ -32,7 +32,7 @@ public class SkyWarsItemUtils {
 	public static void giveSetupItems(Player player) {
 		player.getInventory().clear();
 		player.getInventory().setArmorContents(new ItemStack[] {});
-		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("§eLobby setzen").material(Material.EMERALD).build(), 0, new ItemHookHandler() {
+		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("Â§eLobby setzen").material(Material.EMERALD).build(), 0, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -51,7 +51,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("§eKiste §7(§cremove=Links§7/§aadd=Rechts§7)§eKlick").material(Material.STICK).build(), 1, new ItemHookHandler() {
+		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("Â§eKiste Â§7(Â§cremove=LinksÂ§7/Â§aadd=RechtsÂ§7)Â§eKlick").material(Material.STICK).build(), 1, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -77,12 +77,12 @@ public class SkyWarsItemUtils {
 						return;
 
 					if(chest != null) {
-						event.getPlayer().sendMessage(Main.getPrefix() + "Diese Kiste ist bereits hinzugefügt!");
+						event.getPlayer().sendMessage(Main.getPrefix() + "Diese Kiste ist bereits hinzugefÂ§gt!");
 						return;
 					}
 
 					new SkyWarsChest(event.getClickedBlock().getLocation());
-					event.getPlayer().sendMessage(Main.getPrefix() + "Kiste erfolgreich hinzugefügt!");
+					event.getPlayer().sendMessage(Main.getPrefix() + "Kiste erfolgreich hinzugefÂ§gt!");
 
 					event.setCancelled(true);
 				}
@@ -92,7 +92,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("§eSpawns setzen").material(Material.IRON_HELMET).build(), 2, new ItemHookHandler() {
+		addSetupHook(new ItemHook(player, new ItemBuilder().displayname("Â§eSpawns setzen").material(Material.IRON_HELMET).build(), 2, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -114,7 +114,7 @@ public class SkyWarsItemUtils {
 		player.getInventory().clear();
 		player.getInventory().setArmorContents(new ItemStack[] {});
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bWähle dein Kit").material(Material.CHEST).build(), 0, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("Â§bWÂ§hle dein Kit").material(Material.CHEST).build(), 0, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -133,7 +133,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§eWähle dein Team").material(Material.BED).build(), 1, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("Â§eWÂ§hle dein Team").material(Material.BED).build(), 1, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -152,7 +152,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§cAbstimmungen").material(Material.ANVIL).build(), 2, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("Â§cAbstimmungen").material(Material.ANVIL).build(), 2, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -171,7 +171,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§1Stats").material(Material.BOOK).build(), 8, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("Â§1Stats").material(Material.BOOK).build(), 8, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
@@ -203,7 +203,7 @@ public class SkyWarsItemUtils {
 		for(Player pl : VersionUtils.getOnlinePlayer())
 			pl.hidePlayer(player);
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bTeleporter").itemstack(new ItemStack(Material.COMPASS)).build(), 0, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("Â§bTeleporter").itemstack(new ItemStack(Material.COMPASS)).build(), 0, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}

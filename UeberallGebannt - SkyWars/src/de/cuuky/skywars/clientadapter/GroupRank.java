@@ -34,8 +34,8 @@ public enum GroupRank {
 	private int sortPriority;
 	private GroupRank(String permission, String prefix, String suffix, int sortPriority) {
 		this.permission = permission;
-		this.prefix = prefix.replace("&", "ง");
-		this.suffix = suffix.replace("&", "ง");
+		this.prefix = prefix.replace("&", "ยง");
+		this.suffix = suffix.replace("&", "ยง");
 		this.sortPriority = sortPriority;
 	}
 	

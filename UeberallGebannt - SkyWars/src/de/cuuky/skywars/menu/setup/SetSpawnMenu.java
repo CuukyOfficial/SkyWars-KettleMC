@@ -18,7 +18,7 @@ import de.cuuky.skywars.entity.team.color.SkyWarsTeamColor;
 public class SetSpawnMenu extends SuperInventory {
 
 	public SetSpawnMenu(Player opener) {
-		super("§7Team auswählen", opener, 27, true);
+		super("Â§7Team auswÂ§hlen", opener, 27, true);
 
 		open();
 		
@@ -44,9 +44,9 @@ public class SetSpawnMenu extends SuperInventory {
 		for(int i = 0; i < SkyWarsTeamColor.values().length; i++) {
 			SkyWarsTeamColor teamcolor = SkyWarsTeamColor.values()[i];
 			ArrayList<String> lore = new ArrayList<>();
-			lore.add("§fDerzeitge Spawns:");
+			lore.add("Â§fDerzeitge Spawns:");
 			for(Location location : teamcolor.getSpawnLocations().values())
-				lore.add("§7Welt: §e" + location.getWorld().getName() + "§8, §7X: §e" + location.getBlockX() + "§8, §7Y: §e" + location.getBlockY() + "§8, §7Z:§e" + location.getBlockZ());
+				lore.add("Â§7Welt: Â§e" + location.getWorld().getName() + "Â§8, Â§7X: Â§e" + location.getBlockX() + "Â§8, Â§7Y: Â§e" + location.getBlockY() + "Â§8, Â§7Z:Â§e" + location.getBlockZ());
 
 			linkItemTo(i, new ItemBuilder().displayname(teamcolor.getFullColor() + "Team " + teamcolor.getName()).lore(lore).itemstack(new ItemStack(Material.IRON_HELMET)).build(), new Runnable() {
 

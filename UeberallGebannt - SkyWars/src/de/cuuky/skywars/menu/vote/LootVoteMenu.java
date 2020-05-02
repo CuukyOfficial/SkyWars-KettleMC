@@ -25,7 +25,7 @@ public class LootVoteMenu extends SuperInventory {
 	}
 
 	public LootVoteMenu(Player opener) {
-		super("ง6Loot", opener, 18, true);
+		super("ยง6Loot", opener, 18, true);
 
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
@@ -52,7 +52,7 @@ public class LootVoteMenu extends SuperInventory {
 	@Override
 	public boolean onOpen() {
 		SkyWarsPlayer swp = SkyWarsPlayer.getPlayer(opener);
-		linkItemTo(11, new ItemBuilder().displayname("ง1Common").itemstack(new ItemStack(Material.APPLE)).lore("ง7Votes: งe" + SkyWarsLootType.COMMON.getVotes().size()).build(), new Runnable() {
+		linkItemTo(11, new ItemBuilder().displayname("ยง1Common").itemstack(new ItemStack(Material.APPLE)).lore("ยง7Votes: ยงe" + SkyWarsLootType.COMMON.getVotes().size()).build(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -63,7 +63,7 @@ public class LootVoteMenu extends SuperInventory {
 			}
 		});
 
-		linkItemTo(13, new ItemBuilder().displayname("ง6Uncommon").itemstack(new ItemStack(Material.GOLDEN_APPLE)).lore("ง7Votes: งe" + SkyWarsLootType.UNCOMMON.getVotes().size()).build(), new Runnable() {
+		linkItemTo(13, new ItemBuilder().displayname("ยง6Uncommon").itemstack(new ItemStack(Material.GOLDEN_APPLE)).lore("ยง7Votes: ยงe" + SkyWarsLootType.UNCOMMON.getVotes().size()).build(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -74,7 +74,7 @@ public class LootVoteMenu extends SuperInventory {
 			}
 		});
 
-		linkItemTo(15, new ItemBuilder().displayname("ง5Rare").itemstack(new ItemStack(Material.GOLDEN_APPLE)).addEnchantment(Enchantment.DAMAGE_ALL, 1).lore("ง7Votes: งe" + SkyWarsLootType.RARE.getVotes().size()).deleteDamageAnnotation().build(), new Runnable() {
+		linkItemTo(15, new ItemBuilder().displayname("ยง5Rare").itemstack(new ItemStack(Material.GOLDEN_APPLE)).addEnchantment(Enchantment.DAMAGE_ALL, 1).lore("ยง7Votes: ยงe" + SkyWarsLootType.RARE.getVotes().size()).deleteDamageAnnotation().build(), new Runnable() {
 
 			@Override
 			public void run() {
