@@ -7,7 +7,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.cuuky.cfw.CuukyFrameWork;
 import de.cuuky.cfw.clientadapter.board.CustomBoardType;
 import de.cuuky.cfw.version.VersionUtils;
-import de.cuuky.skywars.clientadapter.CustomBoardUpdateHandler;
 import de.cuuky.skywars.commands.ForceMapCommand;
 import de.cuuky.skywars.commands.KitCommand;
 import de.cuuky.skywars.commands.SetupCommand;
@@ -30,7 +29,7 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 
 	private SkyWarsGame skyWarsGame;
-	private CuukyFrameWork cuukyFrameWork;
+	private CuukyFrameWork<SkyWarsPlayer> cuukyFrameWork;
 
 	@Override
 	public void onEnable() {
@@ -38,9 +37,9 @@ public class Main extends JavaPlugin {
 		instance = this;
 
 		System.out.println(CONSOLE_PREFIX + "Initializing framework...");
-		this.cuukyFrameWork = new CuukyFrameWork(this);
-		this.cuukyFrameWork.getClientAdapterManager().setUpdateHandler(new CustomBoardUpdateHandler());
-		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.TABLIST, false);
+		this.cuukyFrameWork = new CuukyFrameWork<SkyWarsPlayer>(this);
+		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.SCOREBOARD, true);
+		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.NAMETAG, true);
 
 		System.out.println(CONSOLE_PREFIX + "Loading MySQL...");
 		skyWarsGame = new SkyWarsGame();
@@ -92,7 +91,7 @@ public class Main extends JavaPlugin {
 		return skyWarsGame;
 	}
 	
-	public CuukyFrameWork getCuukyFrameWork() {
+	public CuukyFrameWork<SkyWarsPlayer> getCuukyFrameWork() {
 		return cuukyFrameWork;
 	}
 

@@ -9,6 +9,7 @@ import de.cuuky.cfw.clientadapter.board.nametag.CustomNametag;
 import de.cuuky.cfw.clientadapter.board.scoreboard.CustomScoreboard;
 import de.cuuky.cfw.clientadapter.board.tablist.CustomTablist;
 import de.cuuky.cfw.player.CustomPlayer;
+import de.cuuky.cfw.player.clientadapter.BoardUpdateHandler;
 import de.cuuky.cfw.player.connection.NetworkManager;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.SkyWarsEntity;
@@ -29,9 +30,9 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 	private SkyWarsKit selectedKit;
 
 	private NetworkManager networkmanager;
-	private CustomNametag nametag;
-	private CustomScoreboard scoreboard;
-	private CustomTablist tablist;
+	private CustomNametag<SkyWarsPlayer> nametag;
+	private CustomScoreboard<SkyWarsPlayer> scoreboard;
+	private CustomTablist<SkyWarsPlayer> tablist;
 	private Player player;
 
 	public SkyWarsPlayer(String uuid) {
@@ -58,15 +59,15 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 		return networkmanager;
 	}
 
-	public CustomNametag getNametag() {
+	public CustomNametag<SkyWarsPlayer> getNametag() {
 		return nametag;
 	}
 
-	public CustomScoreboard getScoreboard() {
+	public CustomScoreboard<SkyWarsPlayer> getScoreboard() {
 		return scoreboard;
 	}
 
-	public CustomTablist getTablist() {
+	public CustomTablist<SkyWarsPlayer> getTablist() {
 		return tablist;
 	}
 
@@ -97,10 +98,10 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 			this.name = player.getName();
 			this.networkmanager = new NetworkManager(player);
 			
-			ClientAdapterManager utils = Main.getInstance().getCuukyFrameWork().getClientAdapterManager();
-			this.scoreboard = (CustomScoreboard) utils.registerBoard(new CustomScoreboard(this));
-			this.nametag = (CustomNametag) utils.registerBoard(new CustomNametag(this));
-			this.tablist = (CustomTablist) utils.registerBoard(new CustomTablist(this));
+			ClientAdapterManager<SkyWarsPlayer> utils = Main.getInstance().getCuukyFrameWork().getClientAdapterManager();
+			this.scoreboard = (CustomScoreboard<SkyWarsPlayer>) utils.registerBoard(new CustomScoreboard<SkyWarsPlayer>(this));
+			this.nametag = (CustomNametag<SkyWarsPlayer>) utils.registerBoard(new CustomNametag<SkyWarsPlayer>(this));
+			this.tablist = (CustomTablist<SkyWarsPlayer>) utils.registerBoard(new CustomTablist<SkyWarsPlayer>(this));
 		} else {
 			this.nametag.remove();
 			this.scoreboard.remove();
@@ -165,5 +166,10 @@ public class SkyWarsPlayer implements CustomPlayer, SkyWarsEntity {
 
 	public static ArrayList<SkyWarsPlayer> getSkyWarsPlayer() {
 		return skywarsplayer;
+	}
+
+	@Override
+	public BoardUpdateHandler<SkyWarsPlayer> getUpdateHandler() {
+		return null;
 	}
 }

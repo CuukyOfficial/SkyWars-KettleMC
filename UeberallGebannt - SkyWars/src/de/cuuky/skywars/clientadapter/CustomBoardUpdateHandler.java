@@ -2,49 +2,40 @@ package de.cuuky.skywars.clientadapter;
 
 import java.util.ArrayList;
 
-import org.bukkit.entity.Player;
-
-import de.cuuky.cfw.clientadapter.board.BoardUpdateHandler;
+import de.cuuky.cfw.player.clientadapter.BoardUpdateHandler;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 import de.cuuky.skywars.entity.team.SkyWarsTeam;
 import de.cuuky.skywars.game.SkyWarsGame;
 import de.cuuky.skywars.game.SkyWarsGamestate;
 
-public class CustomBoardUpdateHandler implements BoardUpdateHandler {
+public class CustomBoardUpdateHandler extends BoardUpdateHandler<SkyWarsPlayer> {
 
-	@Override
-	public ArrayList<String> getTablistHeader(Player player) {
-		return null;
+	public CustomBoardUpdateHandler(SkyWarsPlayer player) {
+		super(player);
 	}
 
 	@Override
-	public ArrayList<String> getTablistFooter(Player player) {
-		return null;
-	}
-
-	@Override
-	public String getScoreboardTitle(Player player) {
+	public String getScoreboardTitle() {
 		return "§e§lSkyWars";
 	}
 
 	@Override
-	public ArrayList<String> getScoreboardEntries(Player player) {
+	public ArrayList<String> getScoreboardEntries() {
 		ArrayList<String> scoreboard = Main.getInstance().getSkyWarsGame().getGameState().getScoreboard();
-		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
-		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(sPlayer);
+		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(player);
 
-		for(int i = 0; i < scoreboard.size(); i++) {
+		for (int i = 0; i < scoreboard.size(); i++) {
 			String line = scoreboard.get(i);
-			
+
 			line = line.replace("&", "§");
-			line = line.replace("%localKills%", String.valueOf(sPlayer.getStats().getKills()));
-			line = line.replace("%kills%", String.valueOf(sPlayer.getStats().getLocalKills()));
+			line = line.replace("%localKills%", String.valueOf(player.getStats().getKills()));
+			line = line.replace("%kills%", String.valueOf(player.getStats().getLocalKills()));
 			line = line.replace("%team%", sTeam != null ? sTeam.getName() : "-");
-			line = line.replace("%kit%", (sPlayer.getSelectedKit() != null ? sPlayer.getSelectedKit().getName() : "-"));
+			line = line.replace("%kit%", (player.getSelectedKit() != null ? player.getSelectedKit().getName() : "-"));
 
 			SkyWarsGame game = Main.getInstance().getSkyWarsGame();
-			if(game.getGameState() != SkyWarsGamestate.SETUP) {
+			if (game.getGameState() != SkyWarsGamestate.SETUP) {
 				line = line.replace("%map%", game.getGameworld().getName());
 				line = line.replace("%time%", String.valueOf(Main.getInstance().getSkyWarsGame().getCurrentThread().getTimer()));
 				line = line.replace("%remaining%", String.valueOf(SkyWarsPlayer.getAliveSkyWarsPlayer().size()));
@@ -57,38 +48,29 @@ public class CustomBoardUpdateHandler implements BoardUpdateHandler {
 	}
 
 	@Override
-	public String getNametagName(Player player) {
-		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
-		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(sPlayer);
+	public String getNametagName() {
+		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(player);
 
-		String name = GroupRank.getGroupRank(player).getSortPriority() + player.getName();
-		if(sTeam != null)
+		String name = GroupRank.getGroupRank(player.getPlayer()).getSortPriority() + player.getName();
+		if (sTeam != null)
 			name = name + sTeam.getTeamcolor().getFullColor().replace("§", "");
 
 		return name;
 	}
 
 	@Override
-	public String getNametagPrefix(Player player) {
-		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
-		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(sPlayer);
-
-		return sTeam == null ? GroupRank.getGroupRank(player).getPrefix() : sTeam.getTeamcolor().getFullColor() + sTeam.getName() + " §8| " + sTeam.getTeamcolor().getFullColor();
+	public String getNametagPrefix() {
+		SkyWarsTeam sTeam = SkyWarsTeam.getTeam(player);
+		return sTeam == null ? GroupRank.getGroupRank(player.getPlayer()).getPrefix() : sTeam.getTeamcolor().getFullColor() + sTeam.getName() + " §8| " + sTeam.getTeamcolor().getFullColor();
 	}
 
 	@Override
-	public String getNametagSuffix(Player player) {
-		SkyWarsPlayer sPlayer = SkyWarsPlayer.getPlayer(player);
-		return Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME ? " §c" + sPlayer.getKills() : "";
+	public String getNametagSuffix() {
+		return Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME ? " §c" + player.getKills() : "";
 	}
 
 	@Override
-	public boolean isNametagVisible(Player player) {
-		return false;
-	}
-
-	@Override
-	public String getTablistName(Player player) {
-		return getNametagName(player) + player.getName() + getNametagSuffix(player);
+	public String getTablistName() {
+		return getNametagName() + player.getName() + getNametagSuffix();
 	}
 }
