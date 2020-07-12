@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.cuuky.cfw.CuukyFrameWork;
+import de.cuuky.cfw.AdapterCuukyFrameWork;
 import de.cuuky.cfw.clientadapter.board.CustomBoardType;
 import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.commands.ForceMapCommand;
@@ -29,7 +29,7 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 
 	private SkyWarsGame skyWarsGame;
-	private CuukyFrameWork<SkyWarsPlayer> cuukyFrameWork;
+	private AdapterCuukyFrameWork<SkyWarsPlayer> cuukyFrameWork;
 
 	@Override
 	public void onEnable() {
@@ -37,7 +37,7 @@ public class Main extends JavaPlugin {
 		instance = this;
 
 		System.out.println(CONSOLE_PREFIX + "Initializing framework...");
-		this.cuukyFrameWork = new CuukyFrameWork<SkyWarsPlayer>(this);
+		this.cuukyFrameWork = new AdapterCuukyFrameWork<SkyWarsPlayer>(this);
 		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.SCOREBOARD, true);
 		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.NAMETAG, true);
 
@@ -91,7 +91,7 @@ public class Main extends JavaPlugin {
 		return skyWarsGame;
 	}
 	
-	public CuukyFrameWork<SkyWarsPlayer> getCuukyFrameWork() {
+	public AdapterCuukyFrameWork<SkyWarsPlayer> getCuukyFrameWork() {
 		return cuukyFrameWork;
 	}
 
