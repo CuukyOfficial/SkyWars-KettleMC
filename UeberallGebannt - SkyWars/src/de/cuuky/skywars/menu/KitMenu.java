@@ -20,7 +20,7 @@ public class KitMenu extends SuperInventory {
 
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
-		
+
 		open();
 	}
 
@@ -44,7 +44,7 @@ public class KitMenu extends SuperInventory {
 		ArrayList<SkyWarsKit> boughtItems = SkyWarsKit.getAvialableKitsFor(player);
 
 		int slot = 0;
-		for(SkyWarsKit boughtKit : boughtItems) {
+		for (SkyWarsKit boughtKit : boughtItems) {
 			linkItemTo(slot, new ItemBuilder().itemstack(boughtKit.getIcon()).lore("§aIn Besitz").build(), new Runnable() {
 
 				@Override
@@ -57,11 +57,11 @@ public class KitMenu extends SuperInventory {
 			slot++;
 		}
 
-		for(SkyWarsKit kit : SkyWarsKit.getKits()) {
-			if(boughtItems.contains(kit))
+		for (SkyWarsKit kit : SkyWarsKit.getKits()) {
+			if (boughtItems.contains(kit))
 				continue;
 
-			linkItemTo(slot, new ItemBuilder().itemstack(kit.getIcon()).lore("§cNicht in Besitz").build(), null);
+			linkItemTo(slot, new ItemBuilder().itemstack(kit.getIcon()).lore("§cNicht in Besitz").build());
 			slot++;
 		}
 		return true;
