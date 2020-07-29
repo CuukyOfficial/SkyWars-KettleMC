@@ -18,11 +18,10 @@ import de.cuuky.skywars.entity.team.color.SkyWarsTeamColor;
 public class SetSpawnMenu extends SuperInventory {
 
 	public SetSpawnMenu(Player opener) {
-		super("§7Team ausw§hlen", opener, 27, true);
-
-		open();
+		super("§7Team auswählen", opener, 27, true);
 
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
+		open();
 	}
 
 	@Override
