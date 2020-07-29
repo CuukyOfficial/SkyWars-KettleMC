@@ -104,6 +104,8 @@ public class PlayerHandleListener implements Listener {
 				mp.getStats().addPlayedGame();
 				team.checkIfDead(true);
 			}
+			
+			mp.getStats().saveMySQLStats();
 			break;
 		default:
 			break;
@@ -115,7 +117,6 @@ public class PlayerHandleListener implements Listener {
 		player.setLevel(0);
 		player.setHealth(20);
 		player.setFoodLevel(20);
-		mp.getStats().saveMySQLStats();
 		mp.setPlayer(null);
 	}
 }

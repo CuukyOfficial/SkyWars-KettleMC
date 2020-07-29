@@ -33,6 +33,7 @@ public class SkyWarsFinishedThread extends SkyWarsThread {
 			player.getPlayer().getInventory().setArmorContents(new ItemStack[] {});
 
 			player.getPlayer().updateInventory();
+			player.getStats().saveMySQLStats();
 
 			for (Player pl : VersionUtils.getOnlinePlayer())
 				pl.showPlayer(player.getPlayer());
