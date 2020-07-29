@@ -22,16 +22,16 @@ public class PlayerHandleListener implements Listener {
 
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {
-		if(VersionUtils.getOnlinePlayer().size() >= (Main.getInstance().getSkyWarsGame().getTeamAmount() * Main.getInstance().getSkyWarsGame().getTeamSize())) {
+		if (VersionUtils.getOnlinePlayer().size() >= (Main.getInstance().getSkyWarsGame().getTeamAmount() * Main.getInstance().getSkyWarsGame().getTeamSize())) {
 			event.setKickMessage("§7The server is full!");
 			event.setResult(Result.KICK_FULL);
 			return;
 		}
 
 		Player player = event.getPlayer();
-		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
+		switch (Main.getInstance().getSkyWarsGame().getGameState()) {
 		case SETUP:
-			if(!player.hasPermission("skywars.setup"))
+			if (!player.hasPermission("skywars.setup"))
 				event.disallow(Result.KICK_OTHER, "§4Server wird noch aufgesetzt!");
 			break;
 		case FINISHED:
@@ -42,7 +42,7 @@ public class PlayerHandleListener implements Listener {
 		}
 
 		SkyWarsPlayer mp = SkyWarsPlayer.getPlayer(player);
-		if(mp == null)
+		if (mp == null)
 			mp = new SkyWarsPlayer(player.getUniqueId().toString());
 	}
 
@@ -54,10 +54,10 @@ public class PlayerHandleListener implements Listener {
 		mp.setPlayer(event.getPlayer());
 		event.setJoinMessage(null);
 
-		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
+		switch (Main.getInstance().getSkyWarsGame().getGameState()) {
 		case SETUP:
 			event.setJoinMessage("§6" + mp.getName() + " §7hat das Spiel betreten");
-			
+
 			player.setGameMode(GameMode.CREATIVE);
 			SkyWarsItemUtils.giveSetupItems(player);
 			break;
@@ -82,23 +82,23 @@ public class PlayerHandleListener implements Listener {
 		Player player = event.getPlayer();
 		SkyWarsPlayer mp = SkyWarsPlayer.getPlayer(player);
 		SkyWarsTeam team = SkyWarsTeam.getTeam(mp);
-		
+
 		event.setQuitMessage(null);
 
-		for(Player pl : VersionUtils.getOnlinePlayer())
+		for (Player pl : VersionUtils.getOnlinePlayer())
 			pl.showPlayer(player);
 
-		switch(Main.getInstance().getSkyWarsGame().getGameState()) {
+		switch (Main.getInstance().getSkyWarsGame().getGameState()) {
 		case LOBBY:
 			event.setQuitMessage("§6" + mp.getName() + " §7hat das Spiel verlassen");
 			SkyWarsLootType.removeAllVotes(mp);
 			SkyWarsChestType.removeAllVotes(mp);
 
-			if(team != null)
+			if (team != null)
 				team.removePlayer(mp);
 			break;
 		case INGAME:
-			if(mp.getState() == SkyWarsPlayerState.ALIVE) {
+			if (mp.getState() == SkyWarsPlayerState.ALIVE) {
 				mp.setState(SkyWarsPlayerState.DEAD);
 				mp.getStats().addDeath();
 				mp.getStats().addPlayedGame();

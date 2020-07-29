@@ -41,7 +41,7 @@ public class SkyWarsGame {
 	public SkyWarsGame() {
 		loadData();
 
-		if(lobbyLocation != null && SkyWarsKit.getKits().size() != 0 && SkyWarsChest.getChests().size() != 0)
+		if (lobbyLocation != null && SkyWarsKit.getKits().size() != 0 && SkyWarsChest.getChests().size() != 0)
 			setState(SkyWarsGamestate.LOBBY);
 		else
 			setState(SkyWarsGamestate.SETUP);
@@ -53,33 +53,33 @@ public class SkyWarsGame {
 		this.teamAmount = config.getInt("game.teams.amount", 4);
 		this.teamSize = config.getInt("game.teams.size", 2);
 		this.lobbyLocation = config.getValue("game.lobbyLocation", "nullReplace") instanceof String ? null : (Location) config.getValue("game.lobbyLocation", "nullReplace");
-		
+
 		ArrayList<String> gameworlds = new ArrayList<>();
 		gameworlds.add("testmap");
 		gameworlds = (ArrayList<String>) this.config.getValue("game.worlds", gameworlds);
-		
+
 		this.gameworlds = new ArrayList<>();
-		for(String worldname : gameworlds) 
+		for (String worldname : gameworlds)
 			this.gameworlds.add(Bukkit.getWorld(worldname) != null ? Bukkit.getWorld(worldname) : Bukkit.createWorld(new WorldCreator(worldname)));
 
 		this.kitHandler = new SkyWarsKitHandler();
 		this.teamcolorHandler = new SkyWarsTeamColorHandler();
 		this.chestHandler = new SkyWarsChestHandler();
 
-		if(lobbyLocation == null)
+		if (lobbyLocation == null)
 			return;
 
 		prepareWorld(this.lobbyLocation.getWorld());
 		try {
 			ArrayList<World> worlds = this.gameworlds;
 			World gameworld = null;
-			if(worlds.size() > 1)
+			if (worlds.size() > 1)
 				gameworld = worlds.get(JavaUtils.randomInt(0, worlds.size() - 1));
 			else
 				gameworld = worlds.get(0);
 
 			setGameworld(gameworld);
-		} catch(Throwable e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 			System.out.println(Main.getConsolePrefix() + "Failed to load any GameWorld!");
 			Bukkit.getServer().shutdown();
@@ -97,11 +97,11 @@ public class SkyWarsGame {
 
 	public void checkForWin() {
 		SkyWarsTeam alive = null;
-		for(SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
-			if(teams.checkIfDead(false))
+		for (SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
+			if (teams.checkIfDead(false))
 				continue;
 
-			if(alive == null)
+			if (alive == null)
 				alive = teams;
 			else
 				return;
@@ -115,21 +115,21 @@ public class SkyWarsGame {
 		this.kitHandler.save();
 		this.teamcolorHandler.save();
 		this.chestHandler.save();
-		
-		for(SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer())
+
+		for (SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer())
 			player.getStats().saveMySQLStats();
 	}
 
 	public void setState(SkyWarsGamestate state) {
-		if(this.state == state)
+		if (this.state == state)
 			return;
 
 		this.state = state;
 
-		if(currentThread != null)
+		if (currentThread != null)
 			this.currentThread.cancelScheduler();
 
-		switch(state) {
+		switch (state) {
 		case SETUP:
 			this.currentThread = new SkyWarsThread(this) {
 
@@ -137,7 +137,7 @@ public class SkyWarsGame {
 				protected void doThreadHeartbeat() {
 					timer++;
 
-					if(timer % 120 == 0 || timer == 10)
+					if (timer % 120 == 0 || timer == 10)
 						Bukkit.broadcastMessage(Main.getPrefix() + "Der Server befindet sich im Setup-Modus, da fehlende Einstellungen vorhanden sind!");
 				}
 			};
@@ -174,23 +174,23 @@ public class SkyWarsGame {
 	}
 
 	public void setGameworld(World gameworld) {
-		if(this.gameworld != null)
+		if (this.gameworld != null)
 			Bukkit.broadcastMessage(Main.getPrefix() + "Die Map wurde ge§ndert!");
 
 		this.gameworld = gameworld;
 
 		prepareWorld(gameworld);
-		if(this.teamAmount > 16) {
+		if (this.teamAmount > 16) {
 			System.out.println(Main.getConsolePrefix() + "Amount of teams can't be higher than 16!");
 			Bukkit.getServer().shutdown();
 			return;
 		}
 
 		SkyWarsTeam.clearTeams();
-		for(int i = 0; i < teamAmount; i++)
+		for (int i = 0; i < teamAmount; i++)
 			new SkyWarsTeam(i);
 
-		for(TeamMenu menu : TeamMenu.getInventories())
+		for (TeamMenu menu : TeamMenu.getInventories())
 			menu.closeInventory();
 	}
 

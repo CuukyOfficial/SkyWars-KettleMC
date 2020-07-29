@@ -29,7 +29,7 @@ public class TeamMenu extends SuperInventory {
 
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
-		
+
 		open();
 
 		inventories.add(this);
@@ -55,16 +55,16 @@ public class TeamMenu extends SuperInventory {
 	public boolean onOpen() {
 		ArrayList<SkyWarsTeam> teams = new ArrayList<SkyWarsTeam>(SkyWarsTeam.getTeams());
 		int i = 1;
-		for(int teamnumber = 0; teamnumber < teams.size(); teamnumber++) {
+		for (int teamnumber = 0; teamnumber < teams.size(); teamnumber++) {
 			SkyWarsTeam team = teams.get(teamnumber);
 
 			ArrayList<String> lore = new ArrayList<>();
 			lore.add("§7Farbe: " + team.getTeamcolor().getFullColor() + team.getName());
 			lore.add(" ");
-			for(int member = 0; member < Main.getInstance().getSkyWarsGame().getTeamSize(); member++)
+			for (int member = 0; member < Main.getInstance().getSkyWarsGame().getTeamSize(); member++)
 				lore.add("§7§ " + team.getTeamcolor().getFullColor() + (team.getPlayers().size() > member ? team.getPlayers().get(member).getName() : "-"));
 
-			if(!team.isFull()) {
+			if (!team.isFull()) {
 				lore.add(" ");
 				lore.add("§7Klicke, um " + team.getTeamcolor().getFullColor() + "Team " + team.getName() + " §7beizutreten!");
 			}
@@ -73,14 +73,14 @@ public class TeamMenu extends SuperInventory {
 
 				@Override
 				public void run() {
-					if(team.isFull())
+					if (team.isFull())
 						return;
 
 					SkyWarsPlayer player = SkyWarsPlayer.getPlayer(opener);
 					SkyWarsTeam playerteam = SkyWarsTeam.getTeam(player);
 
-					if(playerteam != null) {
-						if(playerteam.equals(team))
+					if (playerteam != null) {
+						if (playerteam.equals(team))
 							return;
 						else
 							playerteam.removePlayer(player);
@@ -90,13 +90,13 @@ public class TeamMenu extends SuperInventory {
 					reopenSoon();
 				}
 			});
-			i+=2;
+			i += 2;
 		}
 		return true;
 	}
 
 	public static void updateInventories() {
-		for(TeamMenu menu : new ArrayList<>(inventories))
+		for (TeamMenu menu : new ArrayList<>(inventories))
 			menu.updateInventory();
 	}
 

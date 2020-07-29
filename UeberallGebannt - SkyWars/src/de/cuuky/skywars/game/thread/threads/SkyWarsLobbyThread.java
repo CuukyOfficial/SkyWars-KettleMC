@@ -20,27 +20,27 @@ public class SkyWarsLobbyThread extends SkyWarsThread {
 	protected void doThreadHeartbeat() {
 		final int teamAmount = Main.getInstance().getSkyWarsGame().getTeamAmount(), teamSize = Main.getInstance().getSkyWarsGame().getTeamSize(), maxPlayer = teamAmount * teamSize;
 
-		if(maxPlayer == VersionUtils.getOnlinePlayer().size()) {
-			if(timer > 16)
+		if (maxPlayer == VersionUtils.getOnlinePlayer().size()) {
+			if (timer > 16)
 				timer = 16;
 
 			timer--;
 		} else {
-			if(!(teamSize == 1 && teamAmount < 3)) {
-				if(((double) ((double) VersionUtils.getOnlinePlayer().size() / (double) maxPlayer)) >= 0.5)
+			if (!(teamSize == 1 && teamAmount < 3)) {
+				if (((double) ((double) VersionUtils.getOnlinePlayer().size() / (double) maxPlayer)) >= 0.5)
 					timer--;
 				else
 					timer = 60;
-			} else if(maxPlayer == VersionUtils.getOnlinePlayer().size())
+			} else if (maxPlayer == VersionUtils.getOnlinePlayer().size())
 				timer--;
 		}
 
-		for(Player player : VersionUtils.getOnlinePlayer()) {
+		for (Player player : VersionUtils.getOnlinePlayer()) {
 			player.getPlayer().setExp(0);
 			player.getPlayer().setLevel(timer);
 		}
 
-		if(timer == 0)
+		if (timer == 0)
 			Main.getInstance().getSkyWarsGame().setState(SkyWarsGamestate.INGAME);
 	}
 }

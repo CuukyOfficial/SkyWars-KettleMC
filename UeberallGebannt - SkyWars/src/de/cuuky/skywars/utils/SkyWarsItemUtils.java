@@ -24,7 +24,7 @@ import de.cuuky.skywars.menu.VoteMainMenu;
 import de.cuuky.skywars.menu.setup.SetSpawnMenu;
 
 public class SkyWarsItemUtils {
-	
+
 	private static void addSetupHook(ItemHook hook) {
 		((ItemHook) Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(hook)).setDropable(true);
 	}
@@ -39,7 +39,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				Main.getInstance().getSkyWarsGame().setLobbyLocation(event.getPlayer().getLocation());
@@ -58,25 +58,25 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() == Action.LEFT_CLICK_BLOCK) {
+				if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
 					SkyWarsChest chest = SkyWarsChest.getChest(event.getClickedBlock());
 
-					if(event.getClickedBlock().getType() != Material.CHEST)
+					if (event.getClickedBlock().getType() != Material.CHEST)
 						return;
 
-					if(chest != null)
+					if (chest != null)
 						chest.remove();
 
 					event.getPlayer().sendMessage(Main.getPrefix() + "Kiste erfolgreich entfernt!");
 
 					event.setCancelled(true);
-				} else if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+				} else if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 					SkyWarsChest chest = SkyWarsChest.getChest(event.getClickedBlock());
 
-					if(event.getClickedBlock().getType() != Material.CHEST)
+					if (event.getClickedBlock().getType() != Material.CHEST)
 						return;
 
-					if(chest != null) {
+					if (chest != null) {
 						event.getPlayer().sendMessage(Main.getPrefix() + "Diese Kiste ist bereits hinzugef§gt!");
 						return;
 					}
@@ -99,7 +99,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				new SetSpawnMenu(player);
@@ -121,7 +121,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				new KitMenu(player);
@@ -140,7 +140,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				new TeamMenu(player);
@@ -159,7 +159,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				new VoteMainMenu(player);
@@ -178,7 +178,7 @@ public class SkyWarsItemUtils {
 
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
-				if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
+				if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.RIGHT_CLICK_AIR)
 					return;
 
 				player.performCommand("stats");
@@ -200,7 +200,7 @@ public class SkyWarsItemUtils {
 		player.getInventory().clear();
 		player.getInventory().setArmorContents(new ItemStack[] {});
 
-		for(Player pl : VersionUtils.getOnlinePlayer())
+		for (Player pl : VersionUtils.getOnlinePlayer())
 			pl.hidePlayer(player);
 
 		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§bTeleporter").itemstack(new ItemStack(Material.COMPASS)).build(), 0, new ItemHookHandler() {
@@ -211,7 +211,7 @@ public class SkyWarsItemUtils {
 			@Override
 			public void onInteract(PlayerInteractEvent event) {
 				new PlayerChooseInventory(player, (Player[]) VersionUtils.getOnlinePlayer().toArray(), new PlayerChooseHandler() {
-					
+
 					@Override
 					public void onPlayerChoose(PlayerChooseEvent event) {
 						player.teleport(event.getChoosen());

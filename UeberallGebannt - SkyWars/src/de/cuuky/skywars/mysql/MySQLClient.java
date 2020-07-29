@@ -25,12 +25,12 @@ public class MySQLClient {
 	}
 
 	public void close() {
-		if(connection == null)
+		if (connection == null)
 			return;
 
 		try {
 			connection.close();
-		} catch(SQLException e) {}
+		} catch (SQLException e) {}
 
 		this.connected = false;
 	}
@@ -39,7 +39,7 @@ public class MySQLClient {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/" + database + "?autoReconnect=true", user, password);
 			connected = true;
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println(Main.getConsolePrefix() + "MYSQL USERNAME, IP ODER PASSWORT FALSCH! -> Disabled");
 			throw e;
@@ -52,12 +52,12 @@ public class MySQLClient {
 		try {
 			Statement st = connection.createStatement();
 			rs = st.executeQuery(qry);
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println(Main.getConsolePrefix() + "Connection to MySQL-Database lost!");
 			try {
 				connect();
-			} catch(SQLException e1) {
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
@@ -70,12 +70,12 @@ public class MySQLClient {
 			Statement st = connection.createStatement();
 			st.executeUpdate(qry);
 			st.close();
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println(Main.getConsolePrefix() + "Connection to MySQL-Database lost!");
 			try {
 				connect();
-			} catch(SQLException e1) {
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}

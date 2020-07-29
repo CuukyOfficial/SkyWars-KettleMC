@@ -12,11 +12,11 @@ public class StatsCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(!(sender instanceof Player)) {
+		if (!(sender instanceof Player)) {
 			System.out.println(Main.getConsolePrefix() + "Fuck off (Not for you)");
 			return false;
 		}
-		
+
 		SkyWarsPlayer player = SkyWarsPlayer.getPlayer((Player) sender);
 		player.getPlayer().sendMessage(Main.getPrefix() + "§8----- §7Deine §eStats §8-----");
 		player.getPlayer().sendMessage(Main.getPrefix() + "Kills: §e" + (player.getStats().getKills() + player.getStats().getLocalKills()));

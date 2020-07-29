@@ -57,7 +57,7 @@ public class SkyWarsKit implements ConfigurationSerializable {
 
 	private int generateId() {
 		int id = kits.size();
-		while(getKit(id) != null)
+		while (getKit(id) != null)
 			id++;
 
 		return id;
@@ -67,20 +67,20 @@ public class SkyWarsKit implements ConfigurationSerializable {
 		this.inventory = new HashMap<>();
 		this.armor = new ArrayList<>();
 
-		for(int i = 0; i < player.getInventory().getSize(); i++) {
+		for (int i = 0; i < player.getInventory().getSize(); i++) {
 			ItemStack stack = player.getInventory().getItem(i);
-			if(stack != null && stack.getType() != Material.AIR)
+			if (stack != null && stack.getType() != Material.AIR)
 				this.inventory.put(String.valueOf(i), stack);
 		}
 
-		for(ItemStack l : player.getInventory().getArmorContents())
+		for (ItemStack l : player.getInventory().getArmorContents())
 			armor.add(l);
 	}
 
 	private void loadPotionEffects(Collection<PotionEffect> effects) {
 		this.potioneffects = new HashMap<>();
 
-		for(PotionEffect effect : effects)
+		for (PotionEffect effect : effects)
 			this.potioneffects.put(effect.getType(), effect.getAmplifier());
 	}
 
@@ -92,23 +92,23 @@ public class SkyWarsKit implements ConfigurationSerializable {
 		player.getInventory().clear();
 
 		try {
-			for(String slot : this.inventory.keySet())
+			for (String slot : this.inventory.keySet())
 				player.getInventory().setItem(Integer.valueOf(slot), this.inventory.get(slot));
-		} catch(ArrayIndexOutOfBoundsException e) {}
+		} catch (ArrayIndexOutOfBoundsException e) {}
 
 		ItemStack[] armorc = new ItemStack[4];
-		for(int i = 0; i < armor.size(); i++)
+		for (int i = 0; i < armor.size(); i++)
 			armorc[i] = armor.get(i);
 		player.getInventory().setArmorContents(armorc);
-		
-		for(PotionEffectType type : this.potioneffects.keySet()) 
+
+		for (PotionEffectType type : this.potioneffects.keySet())
 			player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, potioneffects.get(type)));
 
 		player.updateInventory();
 	}
 
 	public boolean canUse(SkyWarsPlayer player) {
-		if(this.permission == null || this.permission.isEmpty())
+		if (this.permission == null || this.permission.isEmpty())
 			return true;
 
 		return player.getPlayer().hasPermission(this.permission);
@@ -155,8 +155,8 @@ public class SkyWarsKit implements ConfigurationSerializable {
 	}
 
 	public static SkyWarsKit getKit(int id) {
-		for(SkyWarsKit kit : kits)
-			if(kit.getId() == id)
+		for (SkyWarsKit kit : kits)
+			if (kit.getId() == id)
 				return kit;
 
 		return null;
@@ -164,8 +164,8 @@ public class SkyWarsKit implements ConfigurationSerializable {
 
 	public static ArrayList<SkyWarsKit> getAvialableKitsFor(SkyWarsPlayer player) {
 		ArrayList<SkyWarsKit> availableKits = new ArrayList<>();
-		for(SkyWarsKit kit : kits) {
-			if(!kit.canUse(player))
+		for (SkyWarsKit kit : kits) {
+			if (!kit.canUse(player))
 				continue;
 
 			availableKits.add(kit);

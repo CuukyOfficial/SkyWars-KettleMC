@@ -31,11 +31,11 @@ public class SkyWarsTeam implements SkyWarsEntity {
 	}
 
 	public boolean checkIfDead(boolean checkWin) {
-		for(SkyWarsPlayer player : players)
-			if(player.getState() == SkyWarsPlayerState.ALIVE)
+		for (SkyWarsPlayer player : players)
+			if (player.getState() == SkyWarsPlayerState.ALIVE)
 				return false;
 
-		if(checkWin) {
+		if (checkWin) {
 			Bukkit.broadcastMessage(Main.getPrefix() + "§7Team " + this.color.getFullColor() + this.color.getName() + " §7wurde ausgel§scht!");
 			Main.getInstance().getSkyWarsGame().checkForWin();
 		}
@@ -50,7 +50,7 @@ public class SkyWarsTeam implements SkyWarsEntity {
 	@Override
 	public int getKills() {
 		int kills = 0;
-		for(SkyWarsPlayer player : players)
+		for (SkyWarsPlayer player : players)
 			kills += player.getKills();
 
 		return kills;
@@ -86,8 +86,8 @@ public class SkyWarsTeam implements SkyWarsEntity {
 	}
 
 	public static SkyWarsTeam getTeam(SkyWarsPlayer player) {
-		for(SkyWarsTeam team : teams)
-			if(team.getPlayers().contains(player))
+		for (SkyWarsTeam team : teams)
+			if (team.getPlayers().contains(player))
 				return team;
 
 		return null;

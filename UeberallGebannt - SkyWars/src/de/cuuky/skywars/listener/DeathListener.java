@@ -36,21 +36,21 @@ public class DeathListener implements Listener {
 		player.setState(SkyWarsPlayerState.SPECTATOR);
 		SkyWarsTeam.getTeam(player).checkIfDead(true);
 
-		if(Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME) {
+		if (Main.getInstance().getSkyWarsGame().getGameState() == SkyWarsGamestate.INGAME) {
 			player.getPlayer().setVelocity(new Vector(2, 1, 2));
 
-			for(ItemStack stack : player.getPlayer().getInventory().getContents())
-				if(stack != null && stack.getType() != Material.AIR)
+			for (ItemStack stack : player.getPlayer().getInventory().getContents())
+				if (stack != null && stack.getType() != Material.AIR)
 					player.getPlayer().getWorld().dropItemNaturally(player.getPlayer().getLocation(), stack);
 
-			for(ItemStack stack : player.getPlayer().getInventory().getArmorContents())
-				if(stack != null && stack.getType() != Material.AIR)
+			for (ItemStack stack : player.getPlayer().getInventory().getArmorContents())
+				if (stack != null && stack.getType() != Material.AIR)
 					player.getPlayer().getWorld().dropItemNaturally(player.getPlayer().getLocation(), stack);
 
 			SkyWarsItemUtils.giveSpectatorItems(player.getPlayer());
 		}
 	}
-	
+
 	private void killedBy(SkyWarsPlayer player, SkyWarsPlayer killer) {
 		SkyWarsTeam team = SkyWarsTeam.getTeam(player);
 		SkyWarsTeam killerTeam = SkyWarsTeam.getTeam(killer);
@@ -67,11 +67,11 @@ public class DeathListener implements Listener {
 
 	@EventHandler
 	public void onPlayerDeathByPlayer(EntityDamageByEntityEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME || !(event.getEntity() instanceof Player) || !(event.getDamager() instanceof Player))
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME || !(event.getEntity() instanceof Player) || !(event.getDamager() instanceof Player))
 			return;
 
 		SkyWarsPlayer player = SkyWarsPlayer.getPlayer((Player) event.getEntity());
-		if((VersionUtils.getHearts(player.getPlayer()) - event.getFinalDamage()) > 0) {
+		if ((VersionUtils.getHearts(player.getPlayer()) - event.getFinalDamage()) > 0) {
 			hits.put((Player) event.getEntity(), new PlayerHit((Player) event.getEntity(), (Player) event.getDamager()));
 			return;
 		}
@@ -81,22 +81,22 @@ public class DeathListener implements Listener {
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME || !(event.getEntity() instanceof Player))
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME || !(event.getEntity() instanceof Player))
 			return;
 
 		SkyWarsPlayer player = SkyWarsPlayer.getPlayer((Player) event.getEntity());
 		SkyWarsTeam team = SkyWarsTeam.getTeam(player);
-		if((VersionUtils.getHearts(player.getPlayer()) - event.getFinalDamage()) > 0)
+		if ((VersionUtils.getHearts(player.getPlayer()) - event.getFinalDamage()) > 0)
 			return;
 
 		PlayerHit hit = hits.get((Player) event.getEntity());
-		if(hit != null) {
-			if(hit.getMilliSecondsSince() <= 3000) {
+		if (hit != null) {
+			if (hit.getMilliSecondsSince() <= 3000) {
 				killedBy(player, SkyWarsPlayer.getPlayer(hit.getDamager()));
 				return;
 			}
 		}
-		
+
 		Bukkit.broadcastMessage(Main.getPrefix() + team.getTeamcolor().getFullColor() + player.getName() + " §7ist gestorben!");
 		playerDeath(player);
 	}

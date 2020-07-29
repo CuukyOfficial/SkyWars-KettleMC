@@ -12,14 +12,14 @@ import de.cuuky.skywars.Main;
 import de.cuuky.skywars.game.SkyWarsGamestate;
 
 public class CancelListener implements Listener {
-	
+
 	private boolean shouldCancel() {
 		return Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP;
 	}
 
 	@EventHandler
 	public void onEntityDamage(EntityDamageEvent event) {
-		if(!shouldCancel())
+		if (!shouldCancel())
 			return;
 
 		event.setCancelled(true);
@@ -27,7 +27,7 @@ public class CancelListener implements Listener {
 
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
-		if(!shouldCancel())
+		if (!shouldCancel())
 			return;
 
 		event.setCancelled(true);
@@ -35,7 +35,7 @@ public class CancelListener implements Listener {
 
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
-		if(!shouldCancel())
+		if (!shouldCancel())
 			return;
 
 		event.setCancelled(true);
@@ -43,7 +43,7 @@ public class CancelListener implements Listener {
 
 	@EventHandler
 	public void onFoodLevelChange(FoodLevelChangeEvent event) {
-		if(!shouldCancel())
+		if (!shouldCancel())
 			return;
 
 		event.setFoodLevel(40);

@@ -22,51 +22,52 @@ public enum GroupRank {
 	JR_YOUTUBER("prefix.JrYouTuber", "&5JrYT &8| &5", "", 15),
 	STREAMER("prefix.Streamer", "&5ST &8| &5", "", 16),
 	JR_STREAMER("prefix.JrStreamer", "&5JrST &8| &5", "", 17),
-	PARTNER("prefix.Partner", "&6Partner &8| &6", "",18),
+	PARTNER("prefix.Partner", "&6Partner &8| &6", "", 18),
 	FREUND("prefix.Freund", "&aFreund &8| &a", "", 19),
 	RUBY("prefix.Ruby", "&cRuby &8| &c", "", 20),
 	EMERALD("prefix.Emerald", "&2Emerald &8| &2", "", 21),
 	DIAMOND("prefix.Diamond", "&bDiamond &8| &b", "", 22),
 	SPIELER("prefix.Spieler", "&7Spieler &8| &7", "", 23),
 	NONE(null, "&7", "", 24);
-	
+
 	private String permission, prefix, suffix;
 	private int sortPriority;
+
 	private GroupRank(String permission, String prefix, String suffix, int sortPriority) {
 		this.permission = permission;
 		this.prefix = prefix.replace("&", "§");
 		this.suffix = suffix.replace("&", "§");
 		this.sortPriority = sortPriority;
 	}
-	
+
 	public String getPermission() {
 		return permission;
 	}
-	
+
 	public String getPrefix() {
 		return prefix;
 	}
-	
+
 	public String getSuffix() {
 		return suffix;
 	}
-	
+
 	public int getSortPriority() {
 		return sortPriority;
 	}
-	
+
 	public static GroupRank getGroupRank(Player player) {
 		GroupRank current = null;
-		for(GroupRank rank : values()) {
-			if(rank.getPermission() != null && !player.hasPermission(rank.getPermission()))
+		for (GroupRank rank : values()) {
+			if (rank.getPermission() != null && !player.hasPermission(rank.getPermission()))
 				continue;
-			
-			if(current == null)
+
+			if (current == null)
 				current = rank;
-			else if(current.getSortPriority() > rank.getSortPriority())
+			else if (current.getSortPriority() > rank.getSortPriority())
 				current = rank;
 		}
-		
+
 		return current;
 	}
 }

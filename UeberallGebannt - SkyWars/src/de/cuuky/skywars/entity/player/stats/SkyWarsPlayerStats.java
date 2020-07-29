@@ -18,10 +18,10 @@ public class SkyWarsPlayerStats {
 
 	public SkyWarsPlayerStats(SkyWarsPlayer player) {
 		this.player = player;
-		
+
 		loadMySQLStats();
 	}
-	
+
 	private double round(double dou) {
 		return Math.round(dou * 100D) / 100D;
 	}
@@ -30,13 +30,13 @@ public class SkyWarsPlayerStats {
 		ResultSet rs = mysqlClient.getQuery("SELECT * FROM " + mysqlClient.getStatsTable() + " WHERE uuid='" + this.player.getUUID() + "'");
 
 		try {
-			while(rs.next()) {
+			while (rs.next()) {
 				this.kills = rs.getInt("kills");
 				this.deaths = rs.getInt("deaths");
 				this.playedGames = rs.getInt("playedGames");
 				this.wins = rs.getInt("wins");
 			}
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -45,11 +45,11 @@ public class SkyWarsPlayerStats {
 		ResultSet rs = mysqlClient.getQuery("SELECT * FROM " + mysqlClient.getStatsTable() + " WHERE uuid='" + this.player.getUUID() + "'");
 
 		try {
-			if(!rs.next())
+			if (!rs.next())
 				mysqlClient.update("INSERT INTO " + mysqlClient.getStatsTable() + " (uuid, kills, deaths, playedGames, wins) VALUES ('" + this.player.getUUID() + "', " + (kills + localKills) + ", " + deaths + ", " + playedGames + ", " + wins + ");");
 			else
 				mysqlClient.update("UPDATE " + mysqlClient.getStatsTable() + " SET kills='" + (kills + localKills) + "', deaths='" + deaths + "', playedGames='" + playedGames + "', wins='" + this.wins + "' WHERE uuid='" + this.player.getUUID() + "';");
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,7 +57,7 @@ public class SkyWarsPlayerStats {
 	public SkyWarsPlayer getPlayer() {
 		return player;
 	}
-	
+
 	public void addKill() {
 		this.localKills++;
 	}
@@ -65,7 +65,7 @@ public class SkyWarsPlayerStats {
 	public int getKills() {
 		return kills;
 	}
-	
+
 	public void addDeath() {
 		this.deaths++;
 	}
@@ -77,11 +77,11 @@ public class SkyWarsPlayerStats {
 	public void addPlayedGame() {
 		this.playedGames++;
 	}
-	
+
 	public int getPlayedGames() {
 		return playedGames;
 	}
-	
+
 	public void addWin() {
 		this.wins++;
 	}
@@ -89,7 +89,7 @@ public class SkyWarsPlayerStats {
 	public int getWins() {
 		return wins;
 	}
-	
+
 	public int getLocalKills() {
 		return localKills;
 	}
@@ -107,9 +107,9 @@ public class SkyWarsPlayerStats {
 			SkyWarsConfiguration configuration = Main.getInstance().getSkyWarsGame().getConfig();
 			mysqlClient = new MySQLClient(configuration.getString("mysql.host", "localhost"), configuration.getString("mysql.database", "playerstats"), configuration.getString("mysql.table", "skywars"), configuration.getString("mysql.user", "root"), configuration.getString("mysql.password", ""));
 
-			if(mysqlClient.isConnected())
+			if (mysqlClient.isConnected())
 				mysqlClient.update("CREATE TABLE IF NOT EXISTS " + mysqlClient.getStatsTable() + "(uuid VARCHAR(36) NOT NULL, kills int, deaths int, playedGames int, wins int, PRIMARY KEY (uuid));");
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

@@ -25,7 +25,7 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 		try {
 			Class<?> api = Class.forName("me.bukkitbuilder.cloudy.api.minecraft.CloudyMinecraftApi");
 			setIngameMethod = api.getDeclaredMethod("setIngame", Boolean.class);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(Main.getConsolePrefix() + "No Cloudy found");
 		}
 	}
@@ -44,38 +44,38 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 		detectLootType();
 
 		try {
-			if(setIngameMethod != null)
+			if (setIngameMethod != null)
 				setIngameMethod.invoke(null, true);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		Bukkit.broadcastMessage(Main.getPrefix() + "Loot Type: §e" + lootType.toString());
 		Bukkit.broadcastMessage(Main.getPrefix() + "Chest Type: §e" + chestType.toString());
 
-		for(SkyWarsChest chest : SkyWarsChest.getChests())
-			if(chest.getLocation().getWorld().equals(Main.getInstance().getSkyWarsGame().getGameworld()))
+		for (SkyWarsChest chest : SkyWarsChest.getChests())
+			if (chest.getLocation().getWorld().equals(Main.getInstance().getSkyWarsGame().getGameworld()))
 				chest.fillChest(lootType);
 
 		this.timer = 0;
 	}
 
 	private void preparePlayers() {
-		for(SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer()) {
+		for (SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer()) {
 			player.getPlayer().setExp(0);
 			player.getPlayer().setLevel(0);
 
-			if(player.getSelectedKit() == null) {
+			if (player.getSelectedKit() == null) {
 				ArrayList<SkyWarsKit> kits = SkyWarsKit.getAvialableKitsFor(player);
-				if(kits.size() != 0)
+				if (kits.size() != 0)
 					kits.get(JavaUtils.randomInt(0, kits.size() - 1)).restoreInventory(player.getPlayer());
 			} else
 				player.getSelectedKit().restoreInventory(player.getPlayer());
 
 			SkyWarsTeam team = SkyWarsTeam.getTeam(player);
-			if(team == null) {
-				for(SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
-					if(teams.getPlayers().size() != 0)
+			if (team == null) {
+				for (SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
+					if (teams.getPlayers().size() != 0)
 						continue;
 
 					teams.addPlayer(player);
@@ -83,9 +83,9 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 					break;
 				}
 
-				if(team == null)
-					for(SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
-						if(teams.isFull())
+				if (team == null)
+					for (SkyWarsTeam teams : SkyWarsTeam.getTeams()) {
+						if (teams.isFull())
 							continue;
 
 						teams.addPlayer(player);
@@ -94,7 +94,7 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 					}
 			}
 
-			if(team == null) {
+			if (team == null) {
 				player.getPlayer().kickPlayer("No team found!");
 				break;
 			}
@@ -104,26 +104,26 @@ public class SkyWarsIngameThread extends SkyWarsThread {
 	}
 
 	private void detectLootType() {
-		for(SkyWarsLootType type : SkyWarsLootType.values()) {
-			if(!type.isVotable())
+		for (SkyWarsLootType type : SkyWarsLootType.values()) {
+			if (!type.isVotable())
 				continue;
 
-			if(lootType == null)
+			if (lootType == null)
 				lootType = type;
-			else if(lootType.getVotes().size() < type.getVotes().size())
+			else if (lootType.getVotes().size() < type.getVotes().size())
 				lootType = type;
-			else if(lootType.getVotes().size() == type.getVotes().size())
+			else if (lootType.getVotes().size() == type.getVotes().size())
 				lootType = JavaUtils.randomInt(0, 1) == 0 ? lootType : type;
 		}
 	}
 
 	private void detectChestType() {
-		for(SkyWarsChestType type : SkyWarsChestType.values()) {
-			if(chestType == null)
+		for (SkyWarsChestType type : SkyWarsChestType.values()) {
+			if (chestType == null)
 				chestType = type;
-			else if(chestType.getVotes().size() < type.getVotes().size())
+			else if (chestType.getVotes().size() < type.getVotes().size())
 				chestType = type;
-			else if(chestType.getVotes().size() == type.getVotes().size())
+			else if (chestType.getVotes().size() == type.getVotes().size())
 				chestType = JavaUtils.randomInt(0, 1) == 0 ? chestType : type;
 		}
 	}

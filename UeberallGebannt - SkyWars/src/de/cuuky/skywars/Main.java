@@ -49,25 +49,25 @@ public class Main extends JavaPlugin {
 		registerListener();
 		registerCommands();
 
-		for(Player player : VersionUtils.getOnlinePlayer()) {
+		for (Player player : VersionUtils.getOnlinePlayer()) {
 			new SkyWarsPlayer(player.getUniqueId().toString()).setPlayer(player);
-			
-			if(skyWarsGame.getGameState() == SkyWarsGamestate.LOBBY)
+
+			if (skyWarsGame.getGameState() == SkyWarsGamestate.LOBBY)
 				SkyWarsItemUtils.giveLobbyItems(player);
-			else if(skyWarsGame.getGameState() == SkyWarsGamestate.SETUP && player.hasPermission("skywars.setup"))
+			else if (skyWarsGame.getGameState() == SkyWarsGamestate.SETUP && player.hasPermission("skywars.setup"))
 				SkyWarsItemUtils.giveSetupItems(player);
 		}
-		
+
 		System.out.println(CONSOLE_PREFIX + "Enabled!");
 	}
-	
+
 	@Override
 	public void onDisable() {
 		System.out.println(CONSOLE_PREFIX + "Disabling...");
-		
+
 		System.out.println(CONSOLE_PREFIX + "Saving data...");
 		skyWarsGame.saveData();
-		
+
 		System.out.println(CONSOLE_PREFIX + "Disabled!");
 		super.onDisable();
 	}
@@ -90,7 +90,7 @@ public class Main extends JavaPlugin {
 	public SkyWarsGame getSkyWarsGame() {
 		return skyWarsGame;
 	}
-	
+
 	public AdapterCuukyFrameWork<SkyWarsPlayer> getCuukyFrameWork() {
 		return cuukyFrameWork;
 	}

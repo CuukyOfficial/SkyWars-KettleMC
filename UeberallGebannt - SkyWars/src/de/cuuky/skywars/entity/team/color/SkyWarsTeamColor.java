@@ -56,16 +56,16 @@ public enum SkyWarsTeamColor {
 
 	public static ArrayList<SkyWarsTeamColor> getAvailableTeamColors() {
 		ArrayList<SkyWarsTeamColor> available = new ArrayList<>();
-		for(SkyWarsTeamColor color : values())
-			if(color.getSpawnLocations().containsKey(Main.getInstance().getSkyWarsGame().getGameworld()))
+		for (SkyWarsTeamColor color : values())
+			if (color.getSpawnLocations().containsKey(Main.getInstance().getSkyWarsGame().getGameworld()))
 				available.add(color);
 
 		return available;
 	}
 
 	public static SkyWarsTeamColor getTeamColor(String name) {
-		for(SkyWarsTeamColor color : values())
-			if(color.toString().equals(name))
+		for (SkyWarsTeamColor color : values())
+			if (color.toString().equals(name))
 				return color;
 
 		return null;

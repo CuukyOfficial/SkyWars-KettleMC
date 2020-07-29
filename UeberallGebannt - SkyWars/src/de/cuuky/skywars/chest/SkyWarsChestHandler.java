@@ -26,15 +26,15 @@ public class SkyWarsChestHandler {
 	}
 
 	public void save() {
-		for(String path : this.configuration.getKeys(true))
+		for (String path : this.configuration.getKeys(true))
 			this.configuration.set(path, null);
 
-		for(SkyWarsChest chest : SkyWarsChest.getChests())
+		for (SkyWarsChest chest : SkyWarsChest.getChests())
 			this.configuration.set(String.valueOf(chest.getId()), chest);
 
 		try {
 			this.configuration.save(this.file);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

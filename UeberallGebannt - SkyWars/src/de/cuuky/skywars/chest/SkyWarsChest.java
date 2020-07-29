@@ -31,7 +31,7 @@ public class SkyWarsChest implements ConfigurationSerializable {
 		this.id = id;
 		this.location = location;
 
-		if(getBlock() == null || !(getBlock().getState() instanceof Chest))
+		if (getBlock() == null || !(getBlock().getState() instanceof Chest))
 			return;
 
 		chests.add(this);
@@ -46,7 +46,7 @@ public class SkyWarsChest implements ConfigurationSerializable {
 
 	private int generateId() {
 		int id = chests.size();
-		while(getChest(id) != null)
+		while (getChest(id) != null)
 			id++;
 
 		return id;
@@ -59,15 +59,15 @@ public class SkyWarsChest implements ConfigurationSerializable {
 
 			chest.getInventory().clear();
 			int toFill = chest.getInventory().getSize() * JavaUtils.randomInt(28, 45) / 100;
-			for(int i = 0; i < toFill; i++) {
+			for (int i = 0; i < toFill; i++) {
 				int slot = JavaUtils.randomInt(0, chest.getInventory().getSize() - 1);
-				while(chest.getInventory().getItem(slot) != null)
+				while (chest.getInventory().getItem(slot) != null)
 					slot = JavaUtils.randomInt(0, chest.getInventory().getSize() - 1);
 
 				SkyWarsLootType setType = i >= toFill / 2 ? SkyWarsLootType.BASIC : type;
 				chest.getInventory().setItem(slot, setType.getRandomItem());
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -76,14 +76,14 @@ public class SkyWarsChest implements ConfigurationSerializable {
 		try {
 			Block block = getBlock();
 			Chest chest = (Chest) block.getState();
-			for(ItemStack stack : chest.getInventory().getContents())
-				if(stack != null && stack.getType() != Material.AIR)
+			for (ItemStack stack : chest.getInventory().getContents())
+				if (stack != null && stack.getType() != Material.AIR)
 					location.getWorld().dropItemNaturally(location, stack);
 
 			location.getWorld().playEffect(location, Effect.EXPLOSION_LARGE, 2);
 
 			block.setType(Material.AIR);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -119,16 +119,16 @@ public class SkyWarsChest implements ConfigurationSerializable {
 	}
 
 	public static SkyWarsChest getChest(Block block) {
-		for(SkyWarsChest swc : chests)
-			if(swc.getBlock().equals(block))
+		for (SkyWarsChest swc : chests)
+			if (swc.getBlock().equals(block))
 				return swc;
 
 		return null;
 	}
 
 	public static SkyWarsChest getChest(int id) {
-		for(SkyWarsChest swc : chests)
-			if(swc.getId() == id)
+		for (SkyWarsChest swc : chests)
+			if (swc.getId() == id)
 				return swc;
 
 		return null;

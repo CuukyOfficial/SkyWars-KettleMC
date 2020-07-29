@@ -21,7 +21,7 @@ public class SetSpawnMenu extends SuperInventory {
 		super("§7Team ausw§hlen", opener, 27, true);
 
 		open();
-		
+
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
 	}
 
@@ -41,11 +41,11 @@ public class SetSpawnMenu extends SuperInventory {
 
 	@Override
 	public boolean onOpen() {
-		for(int i = 0; i < SkyWarsTeamColor.values().length; i++) {
+		for (int i = 0; i < SkyWarsTeamColor.values().length; i++) {
 			SkyWarsTeamColor teamcolor = SkyWarsTeamColor.values()[i];
 			ArrayList<String> lore = new ArrayList<>();
 			lore.add("§fDerzeitge Spawns:");
-			for(Location location : teamcolor.getSpawnLocations().values())
+			for (Location location : teamcolor.getSpawnLocations().values())
 				lore.add("§7Welt: §e" + location.getWorld().getName() + "§8, §7X: §e" + location.getBlockX() + "§8, §7Y: §e" + location.getBlockY() + "§8, §7Z:§e" + location.getBlockZ());
 
 			linkItemTo(i, new ItemBuilder().displayname(teamcolor.getFullColor() + "Team " + teamcolor.getName()).lore(lore).itemstack(new ItemStack(Material.IRON_HELMET)).build(), new Runnable() {

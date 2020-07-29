@@ -26,9 +26,9 @@ public class SpectatorListener implements Listener {
 		Entity entityDamager = event.getDamager();
 		Entity entityDamaged = event.getEntity();
 
-		if(cancelEvent(event.getEntity())) {
-			if(entityDamager instanceof Arrow) {
-				if(((Arrow) entityDamager).getShooter() instanceof Player) {
+		if (cancelEvent(event.getEntity())) {
+			if (entityDamager instanceof Arrow) {
+				if (((Arrow) entityDamager).getShooter() instanceof Player) {
 					Arrow arrow = (Arrow) entityDamager;
 
 					Player shooter = (Player) arrow.getShooter();
@@ -47,71 +47,71 @@ public class SpectatorListener implements Listener {
 			}
 		}
 
-		if(cancelEvent(entityDamager))
+		if (cancelEvent(entityDamager))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onEntityTarget(EntityTargetLivingEntityEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
 			event.setCancelled(true);
 
-		if(cancelEvent(event.getTarget()))
+		if (cancelEvent(event.getTarget()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onFoodLose(FoodLevelChangeEvent event) {
-		if(cancelEvent(event.getEntity()))
+		if (cancelEvent(event.getEntity()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onHealthLose(EntityDamageEvent event) {
-		if(cancelEvent(event.getEntity()))
+		if (cancelEvent(event.getEntity()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
 			event.setCancelled(true);
 
-		if(cancelEvent(event.getPlayer()))
+		if (cancelEvent(event.getPlayer()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onInventoryMove(InventoryDragEvent event) {
-		if(cancelEvent(event.getWhoClicked()))
+		if (cancelEvent(event.getWhoClicked()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onItemDrop(PlayerPickupItemEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME && Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.SETUP)
 			event.setCancelled(true);
 
-		if(cancelEvent(event.getPlayer()))
+		if (cancelEvent(event.getPlayer()))
 			event.setCancelled(true);
 	}
 
 	@EventHandler
 	public void onItemPickup(PlayerDropItemEvent event) {
-		if(Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME)
+		if (Main.getInstance().getSkyWarsGame().getGameState() != SkyWarsGamestate.INGAME)
 			event.setCancelled(true);
 
-		if(cancelEvent(event.getPlayer()))
+		if (cancelEvent(event.getPlayer()))
 			event.setCancelled(true);
 	}
 
 	private static boolean cancelEvent(Entity interact) {
-		if(!(interact instanceof Player))
+		if (!(interact instanceof Player))
 			return false;
 
 		Player player = (Player) interact;
 
-		if(player.getGameMode() != GameMode.ADVENTURE)
+		if (player.getGameMode() != GameMode.ADVENTURE)
 			return false;
 
 		return true;

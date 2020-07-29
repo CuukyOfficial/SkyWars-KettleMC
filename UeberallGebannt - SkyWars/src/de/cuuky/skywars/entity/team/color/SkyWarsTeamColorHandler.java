@@ -24,16 +24,16 @@ public class SkyWarsTeamColorHandler {
 	private void load() {
 		this.configuration = YamlConfiguration.loadConfiguration(file);
 
-		for(String configcolor : this.configuration.getKeys(true)) {
-			if(!this.configuration.isConfigurationSection(configcolor))
+		for (String configcolor : this.configuration.getKeys(true)) {
+			if (!this.configuration.isConfigurationSection(configcolor))
 				continue;
 
 			SkyWarsTeamColor color = SkyWarsTeamColor.getTeamColor(configcolor);
-			if(color == null)
+			if (color == null)
 				continue;
 
 			ArrayList<CompatibleLocation> locations = (ArrayList<CompatibleLocation>) this.configuration.get(color.toString() + ".locations");
-			for(CompatibleLocation location : locations)
+			for (CompatibleLocation location : locations)
 				color.addSpawnLocation(location.getLocation());
 		}
 	}
@@ -41,20 +41,20 @@ public class SkyWarsTeamColorHandler {
 	private void saveConfig() {
 		try {
 			this.configuration.save(file);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void save() {
-		for(String path : this.configuration.getKeys(true))
+		for (String path : this.configuration.getKeys(true))
 			this.configuration.set(path, null);
 
-		for(SkyWarsTeamColor teamcolor : SkyWarsTeamColor.values()) {
+		for (SkyWarsTeamColor teamcolor : SkyWarsTeamColor.values()) {
 			ArrayList<CompatibleLocation> locations = new ArrayList<>();
-			for(Location loc : teamcolor.getSpawnLocations().values())
+			for (Location loc : teamcolor.getSpawnLocations().values())
 				locations.add(new CompatibleLocation(loc));
-			
+
 			this.configuration.set(teamcolor.toString() + ".locations", locations);
 		}
 

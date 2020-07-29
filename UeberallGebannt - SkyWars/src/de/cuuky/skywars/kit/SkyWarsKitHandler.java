@@ -26,15 +26,15 @@ public class SkyWarsKitHandler {
 	}
 
 	public void save() {
-		for(String path : this.configuration.getKeys(true))
+		for (String path : this.configuration.getKeys(true))
 			this.configuration.set(path, null);
 
-		for(SkyWarsKit kit : SkyWarsKit.getKits())
+		for (SkyWarsKit kit : SkyWarsKit.getKits())
 			this.configuration.set(String.valueOf(kit.getId()), kit);
 
 		try {
 			this.configuration.save(this.file);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

@@ -17,7 +17,7 @@ public abstract class SkyWarsThread implements Runnable {
 	}
 
 	private void doHeartbeat() {
-		for(SkyWarsPlayer swp : SkyWarsPlayer.getOnlineSkyWarsPlayer())
+		for (SkyWarsPlayer swp : SkyWarsPlayer.getOnlineSkyWarsPlayer())
 			swp.update();
 	}
 
@@ -34,7 +34,7 @@ public abstract class SkyWarsThread implements Runnable {
 		doHeartbeat();
 		doThreadHeartbeat();
 	}
-	
+
 	public void setTimer(int timer) {
 		this.timer = timer;
 	}

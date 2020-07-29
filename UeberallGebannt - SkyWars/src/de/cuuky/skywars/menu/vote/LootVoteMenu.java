@@ -17,7 +17,7 @@ import de.cuuky.skywars.chest.loot.SkyWarsLootType;
 import de.cuuky.skywars.entity.player.SkyWarsPlayer;
 
 public class LootVoteMenu extends SuperInventory {
-	
+
 	private static ArrayList<LootVoteMenu> inventories;
 
 	static {
@@ -29,9 +29,9 @@ public class LootVoteMenu extends SuperInventory {
 
 		this.setModifier = false;
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
-		
+
 		open();
-		
+
 		inventories.add(this);
 	}
 
@@ -86,9 +86,9 @@ public class LootVoteMenu extends SuperInventory {
 		});
 		return true;
 	}
-	
+
 	private static void updateInventories() {
-		for(LootVoteMenu menu : new ArrayList<>(inventories))
+		for (LootVoteMenu menu : new ArrayList<>(inventories))
 			menu.updateInventory();
 	}
 }

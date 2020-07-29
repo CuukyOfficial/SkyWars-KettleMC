@@ -19,7 +19,7 @@ public class VoteMainMenu extends SuperInventory {
 		super("§5Vote", opener, 18, true);
 
 		this.setModifier = false;
-		
+
 		Main.getInstance().getCuukyFrameWork().getInventoryManager().registerInventory(this);
 		open();
 	}

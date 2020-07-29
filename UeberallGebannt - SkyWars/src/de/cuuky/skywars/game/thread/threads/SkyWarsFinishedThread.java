@@ -17,8 +17,8 @@ public class SkyWarsFinishedThread extends SkyWarsThread {
 	public SkyWarsFinishedThread(SkyWarsGame game) {
 		super(game);
 
-		for(SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer()) {
-			if(player.getState() == SkyWarsPlayerState.ALIVE) {
+		for (SkyWarsPlayer player : SkyWarsPlayer.getOnlineSkyWarsPlayer()) {
+			if (player.getState() == SkyWarsPlayerState.ALIVE) {
 				player.getStats().addWin();
 				player.getStats().addPlayedGame();
 			}
@@ -34,7 +34,7 @@ public class SkyWarsFinishedThread extends SkyWarsThread {
 
 			player.getPlayer().updateInventory();
 
-			for(Player pl : VersionUtils.getOnlinePlayer())
+			for (Player pl : VersionUtils.getOnlinePlayer())
 				pl.showPlayer(player.getPlayer());
 		}
 
@@ -44,16 +44,16 @@ public class SkyWarsFinishedThread extends SkyWarsThread {
 	@Override
 	protected void doThreadHeartbeat() {
 		timer--;
-		
-		for(Player player : VersionUtils.getOnlinePlayer()) {
+
+		for (Player player : VersionUtils.getOnlinePlayer()) {
 			player.getPlayer().setExp(0);
 			player.getPlayer().setLevel(timer);
 		}
 
-		if(timer == 0) {
+		if (timer == 0) {
 			Bukkit.broadcastMessage(Main.getPrefix() + "Server f§hrt nun herunter...");
 			Bukkit.getServer().shutdown();
-		} else if(timer % 5 == 0 || timer < 5) 
+		} else if (timer % 5 == 0 || timer < 5)
 			Bukkit.broadcastMessage(Main.getPrefix() + "Der Server f§hrt in §e" + timer + " §7Sekunde(n) herunter...");
 	}
 }
