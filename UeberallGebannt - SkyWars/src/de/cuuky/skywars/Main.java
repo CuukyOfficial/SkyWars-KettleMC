@@ -38,8 +38,7 @@ public class Main extends JavaPlugin {
 
 		System.out.println(CONSOLE_PREFIX + "Initializing framework...");
 		this.cuukyFrameWork = new AdapterCuukyFrameWork<SkyWarsPlayer>(this);
-		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.SCOREBOARD, true);
-		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(CustomBoardType.NAMETAG, true);
+		this.cuukyFrameWork.getClientAdapterManager().setBoardTypeEnabled(true, CustomBoardType.SCOREBOARD, CustomBoardType.NAMETAG);
 
 		System.out.println(CONSOLE_PREFIX + "Loading MySQL...");
 		skyWarsGame = new SkyWarsGame();
