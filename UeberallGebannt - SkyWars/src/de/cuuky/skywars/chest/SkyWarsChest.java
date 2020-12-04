@@ -14,6 +14,8 @@ import org.bukkit.inventory.ItemStack;
 
 import de.cuuky.cfw.serialization.CompatibleLocation;
 import de.cuuky.cfw.utils.JavaUtils;
+import de.cuuky.cfw.version.BukkitVersion;
+import de.cuuky.cfw.version.VersionUtils;
 import de.cuuky.skywars.chest.loot.SkyWarsLootType;
 
 public class SkyWarsChest implements ConfigurationSerializable {
@@ -80,7 +82,13 @@ public class SkyWarsChest implements ConfigurationSerializable {
 				if (stack != null && stack.getType() != Material.AIR)
 					location.getWorld().dropItemNaturally(location, stack);
 
-			location.getWorld().playEffect(location, Effect.EXPLOSION_LARGE, 2);
+			Effect effect;
+			if (VersionUtils.getVersion().isHigherThan(BukkitVersion.ONE_12)) {
+				effect = Effect.valueOf("SMOKE");
+			} else {
+				effect = Effect.valueOf("EXPLOSION_LARGE");
+			}
+			location.getWorld().playEffect(location, effect, 2);
 
 			block.setType(Material.AIR);
 		} catch (Exception e) {
