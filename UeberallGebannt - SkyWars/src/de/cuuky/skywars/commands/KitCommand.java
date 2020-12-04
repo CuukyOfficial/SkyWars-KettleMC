@@ -14,7 +14,7 @@ public class KitCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!sender.hasPermission("skywars.setupkits")) {
-			sender.sendMessage(Main.getPrefix() + "Nutze die Kiste um dein Kit auszuw§hlen!");
+			sender.sendMessage(Main.getPrefix() + "Nutze die Kiste um dein Kit auszuwählen!");
 			return false;
 		}
 
