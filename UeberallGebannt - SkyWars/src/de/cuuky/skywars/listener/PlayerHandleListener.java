@@ -35,7 +35,7 @@ public class PlayerHandleListener implements Listener {
 				event.disallow(Result.KICK_OTHER, "§4Server wird noch aufgesetzt!");
 			break;
 		case FINISHED:
-			event.disallow(Result.KICK_OTHER, "§7Das Spiel ist bereits vor§ber!");
+			event.disallow(Result.KICK_OTHER, "§7Das Spiel ist bereits vorüber!");
 			break;
 		default:
 			break;
