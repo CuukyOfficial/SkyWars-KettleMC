@@ -16,6 +16,7 @@ import de.cuuky.cfw.menu.utils.PlayerChooseInventory;
 import de.cuuky.cfw.menu.utils.PlayerChooseInventory.PlayerChooseEvent;
 import de.cuuky.cfw.menu.utils.PlayerChooseInventory.PlayerChooseHandler;
 import de.cuuky.cfw.version.VersionUtils;
+import de.cuuky.cfw.version.types.Materials;
 import de.cuuky.skywars.Main;
 import de.cuuky.skywars.chest.SkyWarsChest;
 import de.cuuky.skywars.menu.KitMenu;
@@ -133,7 +134,7 @@ public class SkyWarsItemUtils {
 			public void onEntityHit(EntityDamageByEntityEvent event) {}
 		}));
 
-		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§eW§hle dein Team").material(Material.BED).build(), 1, new ItemHookHandler() {
+		Main.getInstance().getCuukyFrameWork().getHookManager().registerHook(new ItemHook(player, new ItemBuilder().displayname("§eWähle dein Team").material(Materials.RED_BED.parseMaterial()).build(), 1, new ItemHookHandler() {
 
 			@Override
 			public void onInteractEntity(PlayerInteractEntityEvent event) {}
