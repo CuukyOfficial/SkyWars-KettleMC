@@ -13,19 +13,19 @@ public enum SkyWarsTeamColor {
 
 	RED("Rot", ChatColor.RED),
 	YELLOW("Gelb", ChatColor.YELLOW),
-	GREEN("Gr§n", ChatColor.GREEN),
+	GREEN("Grün", ChatColor.GREEN),
 	BLUE("Blau", ChatColor.BLUE),
 	ORANGE("Orange", ChatColor.GOLD),
 	LIGHT_BLUE("Hellblau", ChatColor.AQUA),
 	PINK("Pink", ChatColor.LIGHT_PURPLE),
 	AQUA("Aqua", ChatColor.DARK_AQUA),
 	DARK_RED("Dunkelrot", ChatColor.DARK_RED),
-	DARK_GREEN("Dunkelgr§n", ChatColor.DARK_GREEN),
+	DARK_GREEN("Dunkelgrün", ChatColor.DARK_GREEN),
 	DARK_BLUE("Dunkelblau", ChatColor.DARK_BLUE),
 	PURPLE("Lila", ChatColor.DARK_PURPLE),
 	BLACK("Schwarz", ChatColor.BLACK),
 	GRAY("Grau", ChatColor.GRAY),
-	WHITE("Wei§", ChatColor.WHITE),
+	WHITE("Weiß", ChatColor.WHITE),
 	DARK_GRAY("Dunkelgrau", ChatColor.DARK_GRAY);
 
 	private String name;
